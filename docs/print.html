@@ -1,0 +1,457 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Zerochain Book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial.html"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payment</a></li><li><a href="ch01-03-add-modules.html"><strong aria-hidden="true">1.3.</strong> Adding Zerochain modules</a></li></ol></li><li><a href="ch02-00-command-line-tool.html"><strong aria-hidden="true">2.</strong> Command Line Tool</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statement in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Zerochain Book</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#introduction" id="introduction"><h1>Introduction</h1></a>
+<p>This documentation helps developers understand the core concepts of Zerochain and walk through the steps required to build Zerochain's node and send confidential transaction using Zerochain’s module.</p>
+<p>Zerochain is a generic parivacy-protecting layer on top of Substrate. It provides some useful substrate modules and toolkit for protecting user's privacy and sensitive data stored on chain.</p>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/20852667/59009598-33972d80-8869-11e9-922b-1f86e18455a8.png" width="500px">
+</div>
+<p>The first goal for Zerochain is providing secure and efficient confidential/anonimous payment protocol for fungible assets. It means</p>
+<ul>
+<li>Transferred amounts are private</li>
+<li>Each account balance is private</li>
+<li>Identities of transactors are private</li>
+</ul>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/20852667/54678399-6d00ac80-4b48-11e9-9c8d-d1ec2b668761.png" width="500px">
+</div>
+<p>Core features of Zerochain are following:</p>
+<ul>
+<li>Efficient computational cost of zk-proving and verifying</li>
+<li>Providing auditability for each account</li>
+<li>Storage friendly confidentiality from wallet and blockchain perspective</li>
+</ul>
+<p>More precisely,</p>
+<ul>
+<li>Computational cost tends to be huge for zero-knowledge proving in general. Zerochain uses pre-processing zk-SNARKS which is kind of ZK proving systems and provides even small computational cost and proof size, there are some trade-off though.</li>
+<li>Statement in zk-SNARKs is based on Zether protocol so that prover computational cost is even less compairing other privacy-protecting protocols.</li>
+<li>Users can allow auditors to see how much they have balances by giving thier viewing key, but auditors cannot spend user's money by using it.</li>
+<li>Zerochain's wallet don't need to run either full node or light client. Simply, it can send transactions via RPC API.</li>
+<li>Zerochain is an account-based blockchain so it can avoid UTXO accumulation and save the growing storage.</li>
+</ul>
+<a class="header" href="#technical-highlevel-overview" id="technical-highlevel-overview"><h2>Technical highlevel overview</h2></a>
+<p>Alice sends the encrypted 5 coins to on-chain as a component of transaction, then it will be added to the bob’s encrypted balance and subtracted it from her encrypted balance. Zero-knowledge proof convice a verifier(a verify function on blockchain) that the transferred amount and balance are under valid range and encryption algorithm is correct.</p>
+<a class="header" href="#getting-started" id="getting-started"><h1>Getting Started</h1></a>
+<p>In this section,  we will explain how to run Zerochain and send confidential/anonymous transactions.</p>
+<a class="header" href="#installation" id="installation"><h1>Installation</h1></a>
+<a class="header" href="#initial-setup" id="initial-setup"><h2>Initial Setup</h2></a>
+<p>Setup latest rust environment.</p>
+<pre><code>curl https://sh.rustup.rs -sSf | sh
+
+rustup update stable
+rustup update nightly
+rustup target add wasm32-unknown-unknown --toolchain nightly
+cargo +nightly install --git https://github.com/alexcrichton/wasm-gc
+</code></pre>
+<p>You will also need to install the following packages:</p>
+<ul>
+<li>Mac:</li>
+</ul>
+<pre><code>brew install cmake pkg-config openssl git llvm
+</code></pre>
+<ul>
+<li>Linux:</li>
+</ul>
+<pre><code>sudo apt install cmake pkg-config libssl-dev git clang libclang-dev
+</code></pre>
+<a class="header" href="#building" id="building"><h2>Building</h2></a>
+<p>Zerochan, then, can be building.</p>
+<pre><code>git clone git@github.com:LayerXcom/zero-chain.git
+cd zero-chain
+./build.sh
+cargo install --force --path ./
+</code></pre>
+<a class="header" href="#turotial-confidential-payment" id="turotial-confidential-payment"><h1>Turotial: Confidential payment</h1></a>
+<p>This tutorial will explain the basic confidential transfer on Zerochain. Alice has the <strong>encrypted</strong> balance of 100 coins and sends <strong>encrypted</strong> 10 coins to Bob. So, Alice's balance will be 90 coins and Bob will get the 10 coins. All operations are done encrypted by ElGamal encryption and zk-SNARKs.</p>
+<p>(First of all, make sure zerochain is running by <a href="ch01-01-installation.html">the following way</a>.)</p>
+<p>Currently, there are two ways to interact with Zerochain.</p>
+<ul>
+<li>CLI (recommended)</li>
+<li>Browser</li>
+</ul>
+<p>Browser UI is not maintenanced well, so might not be working. It is recommended to use with CLI.</p>
+<a class="header" href="#zeroc-zerochain-cli" id="zeroc-zerochain-cli"><h3>zeroc: Zerochain CLI</h3></a>
+<p>zeroc is a command-line utility which can interact with Zerochain.</p>
+<a class="header" href="#initial-setup-1" id="initial-setup-1"><h4>Initial setup</h4></a>
+<ul>
+<li>Install zeroc</li>
+</ul>
+<pre><code>cargo install --force --path zeroc
+</code></pre>
+<ul>
+<li>Setup for zk-SNARKs</li>
+</ul>
+<p>Generating a proving key and verifying key of zk-SNARKs, which are used for confidential payments.</p>
+<pre><code>zeroc setup
+</code></pre>
+<a class="header" href="#interacting-with-zerochain" id="interacting-with-zerochain"><h4>Interacting with Zerochain</h4></a>
+<ul>
+<li>Generate key pairs</li>
+</ul>
+<p>Generate random key pairs(seed, decryption key, and encryption key(public key)).
+Alice's and Bob's key pairs are fixed and Alice already has some coins.</p>
+<pre><code>zeroc init
+</code></pre>
+<ul>
+<li>Send transaction for confidential payment</li>
+</ul>
+<pre><code>zeroc send -a &lt;AMOUNT&gt; -s &lt;Sender's SEED&gt; -to &lt;Recipient's PUBLIC KEY&gt;
+</code></pre>
+<p>In the case, Alice sends 10 coins to Bob...</p>
+<pre><code>zeroc send -a 10 -s 416c696365202020202020202020202020202020202020202020202020202020 -to 45e66da531088b55dcb3b273ca825454d79d2d1d5c4fa2ba4a12c1fa1ccd6389
+</code></pre>
+<ul>
+<li>Get balance</li>
+</ul>
+<p>Get a decrypyed balance using the user's decryption key.</p>
+<pre><code>zeroc balance -d &lt;DECRYPTION KEY&gt;
+</code></pre>
+<p>To get alice's balance...</p>
+<pre><code>zeroc balance -d b0451b0bfab2830a75216779e010e0bfd2e6d0b4e4b1270dfcdfd0d538509e02
+</code></pre>
+<a class="header" href="#browser" id="browser"><h3>Browser</h3></a>
+<ol>
+<li>Setup for zkSNARKs from CLI</li>
+</ol>
+<ul>
+<li>Get the proving key and the veifying key for zk-SNARKs</li>
+</ul>
+<pre><code>./target/release/zero-chain-cli setup
+</code></pre>
+<ol start="2">
+<li>Run the nodes</li>
+</ol>
+<pre><code>./target/release/zero-chain --dev
+</code></pre>
+<ul>
+<li>If you want to clear your old chain's history:</li>
+</ul>
+<pre><code>./target/release/zero-chain purge-chain --dev
+</code></pre>
+<ol start="3">
+<li>Run the UI apps</li>
+</ol>
+<p>The UI repository is here:
+https://github.com/LayerXcom/zero-chain-ui</p>
+<ol start="4">
+<li>Generate the transaction from CLI</li>
+</ol>
+<ul>
+<li>Generate the transaction components (Computing a zero-knowledge proofs and an encryption)</li>
+</ul>
+<pre><code>./target/release/zero-chain-cli generate-tx
+</code></pre>
+<ul>
+<li>For more information (if you want to set the customized amount and address)</li>
+</ul>
+<pre><code>./target/release/zero-chain-cli generate-tx --help
+</code></pre>
+<ol start="5">
+<li>Fill out the form:</li>
+</ol>
+<p>You can send the transaction from firefox browser.</p>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/20852667/54687970-228b2a00-4b60-11e9-8c26-fdfbbb3a17d8.png" width="1100px">
+</div>
+<a class="header" href="#adding-zerochain-modules" id="adding-zerochain-modules"><h1>Adding Zerochain modules</h1></a>
+<p>You can add zerochain modules to your runtime with following way.</p>
+<ol>
+<li>
+<p>Add</p>
+</li>
+<li></li>
+</ol>
+<a class="header" href="#command-line-tool" id="command-line-tool"><h1>Command Line Tool</h1></a>
+<a class="header" href="#creating-a-new-wallet" id="creating-a-new-wallet"><h3>Creating a new wallet</h3></a>
+<p>For security reasons the cryptographic materials are stored encryped by providing a password.</p>
+<p>To do this, run:</p>
+<pre><code>zeroc wallet init
+</code></pre>
+<p>You will then be prompted to enter a password. This password will be used to encrypt your mnemonics of your wallet. Wallet files are stored</p>
+<p>Platform    Value   Example
+Linux   $XDG_DATA_HOME or $HOME/.local/share/zeroc  /home/alice/.local/share
+macOS   $HOME/Library/Application Support/zeroc /Users/Alice/Library/Application Support
+Windows {FOLDERID_LocalAppData}\zeroc   C:\Users\Alice\AppData\Local\zeroc</p>
+<a class="header" href="#creating-a-new-account" id="creating-a-new-account"><h3>Creating a new account</h3></a>
+<pre><code>zeroc wallet gen-account
+</code></pre>
+<p>You will then be prompted to enter a account name.</p>
+<a class="header" href="#show-accounts-list" id="show-accounts-list"><h3>Show accounts list</h3></a>
+<pre><code>zeroc wallet list
+</code></pre>
+<a class="header" href="#recover-a-wallet-from-mnemonic" id="recover-a-wallet-from-mnemonic"><h3>Recover a wallet from mnemonic</h3></a>
+<pre><code>zeroc wallet recover
+</code></pre>
+<p>You will then be prompted to enter a password.</p>
+<a class="header" href="#change-current-account" id="change-current-account"><h3>Change current account</h3></a>
+<pre><code>zeroc wallet change-account
+</code></pre>
+<p>You will then be prompted to enter a account name.</p>
+<a class="header" href="#get-an-accounts-balance" id="get-an-accounts-balance"><h3>Get an account's balance</h3></a>
+<pre><code>zeroc wallet get-balance
+</code></pre>
+<a class="header" href="#setup-for-zk-proving" id="setup-for-zk-proving"><h3>Setup for zk-proving</h3></a>
+<pre><code>zeroc snark setup
+</code></pre>
+<a class="header" href="#send" id="send"><h3>send</h3></a>
+<pre><code>zeroc send
+</code></pre>
+<p>You will then be prompted to enter a transferred amount and a destination address.</p>
+<a class="header" href="#confidential-payment" id="confidential-payment"><h1>Confidential Payment</h1></a>
+<p><a href="https://github.com/LayerXcom/zero-chain/blob/master/runtime/src/conf_transfer.rs">/runtime/src/conf_transfer.rs</a> provides a confidential payment module.</p>
+<p>In this section, we will explain what is &quot;confidential payment&quot; and how it works.</p>
+<a class="header" href="#overview" id="overview"><h1>Overview</h1></a>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/20852667/59552781-fe57b180-8fc5-11e9-8e71-a02efef85622.png" width="800px">
+</div>
+<a class="header" href="#on-chain-operations" id="on-chain-operations"><h1>On-chain operations</h1></a>
+<p>(TODO)</p>
+<a class="header" href="#subtracting-encrypted-fees" id="subtracting-encrypted-fees"><h2>Subtracting encrypted fees</h2></a>
+<p>Fees are subtracted from sender's encrypted balance based on <code>transaction_base_fee</code> storage key in the <code>conf_transfer</code> module.
+<code>transaction_base_fee</code> is set to <code>1</code> by default in <a href="https://github.com/LayerXcom/zero-chain/blob/67655966f3dd067011ea4fd215f128784b53ffd0/src/chain_spec.rs#L136">chain_spec.rs</a>.</p>
+<a class="header" href="#statement-in-circuit" id="statement-in-circuit"><h1>Statement in circuit</h1></a>
+<p>(TODO)</p>
+<a class="header" href="#technology" id="technology"><h1>Technology</h1></a>
+<p>In this section, we will explain core technologies which is used in Zerochain.</p>
+<a class="header" href="#zk-snarks" id="zk-snarks"><h1>zk-SNARKs</h1></a>
+<p>(TODO)</p>
+<a class="header" href="#encryption-scheme" id="encryption-scheme"><h1>Encryption scheme</h1></a>
+<p>All transferred amounts and account balances are encrypted in Zerochain, but you have to compute(add or sub) these with encrypted at the time of the payment.</p>
+<p>Zerochain achieves it by using the special encryption algorithm called “Additive homomorphic encryption”. As you can guess from the name, it can compute the addition(or subtraction) with encrypted. More specifically, Zerochain uses “Lifted-ElGamal encryption” to get efficient encryption and additive homomorphic property. (You can think it’s like Pedersen commitment in terms of additive homomorphic property, but Lifted-Elgamal is an asymmetric key encryption algorithm, not a commitment.)</p>
+<a class="header" href="#encryption" id="encryption"><h2>Encryption</h2></a>
+<p>You can compute the ciphertext like bellow.</p>
+<p>ciphertext:</p>
+<div align="left">
+<img src="https://user-images.githubusercontent.com/20852667/59552793-3e1e9900-8fc6-11e9-9227-2eaba1eaf862.png" width="150px">
+</div>
+<p>where v: transferred amount, r: pseudorandomness, G: generator point, s: secret key (the corresponding public key: sG)</p>
+<a class="header" href="#decryption" id="decryption"><h2>Decryption</h2></a>
+<p>You can decrypt it by using the given ciphertext and secret key.</p>
+<div align="left">
+<img src="https://user-images.githubusercontent.com/20852667/59552795-437be380-8fc6-11e9-9e3c-0f26d1556443.png" width="250px">
+</div>
+<p>Then, you realize you have to solve the discrete logarithm problem to get the amount “v”. Practically, “v” would be just a small bits integer (like 32bits) and vG(v=1,2,…) are computed in advance. (On the other hand, the secret key “s” and pseudorandom “r” will be a huge number so that one cannot solve the discrete logarithm.)</p>
+<p>The decryption of Lifted-ElGamal is not efficient like this, but we chose it as an encryption algorithm in Zerochain due to the efficient encryption and the good compatibility with zero-knowledge proof.</p>
+<a class="header" href="#additive-homomorphic" id="additive-homomorphic"><h2>Additive homomorphic</h2></a>
+<p>Let’s think the case the user has encrypted 10 coins as his balance, then is transferred encrypted 5 coins. That is the addition of ciphertext with v = 10 as balance and v’ = 5 as amount.</p>
+<div align="left">
+<img src="https://user-images.githubusercontent.com/20852667/59552799-4971c480-8fc6-11e9-9f44-0647b47102cb.png" width="600px">
+</div>
+<p>This is the same form as the ciphertext you see above. You can get the amount “15” by using secret key “s” in the same way. All the additions of ciphertext are computed on-chain at the time of updating the balance.</p>
+<a class="header" href="#key-components" id="key-components"><h1>Key components</h1></a>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/20852667/59552701-57731580-8fc5-11e9-8bee-ccf12e0cb051.png" width="600px">
+</div>
+<a class="header" href="#hierarchical-deterministic-wallets" id="hierarchical-deterministic-wallets"><h1>Hierarchical Deterministic Wallets</h1></a>
+<a class="header" href="#open-problems" id="open-problems"><h1>Open problems</h1></a>
+<a class="header" href="#maiking-trusted-setup-to-nearly-trustless-setup" id="maiking-trusted-setup-to-nearly-trustless-setup"><h2>Maiking trusted setup to (nearly) trustless setup</h2></a>
+<a class="header" href="#maiking-the-size-of-anonimity-set-to-entire-account-set" id="maiking-the-size-of-anonimity-set-to-entire-account-set"><h2>Maiking the size of anonimity set to entire account set</h2></a>
+<a class="header" href="#developing-private-smart-contracts" id="developing-private-smart-contracts"><h2>Developing private smart contracts</h2></a>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
