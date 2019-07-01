@@ -2,11 +2,11 @@
 
 This tutorial will explain the basic confidential transfer on Zerochain. Alice has the **encrypted** balance of 100 coins and sends **encrypted** 10 coins to Bob. So, Alice's balance will be 90 coins and Bob will get the 10 coins. All operations are done encrypted by ElGamal encryption and zk-SNARKs.
 
-(First of all, make sure zerochain is running by [the following way](ch01-01-installation.md).)
+(First of all, make sure zerochain is installed by [the following way](ch01-01-installation.md).)
 
 Currently, there are two ways to interact with Zerochain.
 
-- CLI (recommended)
+- CLI (**recommended**)
 - Browser
 
 Browser UI is not maintenanced well, so might not be working. It is recommended to use with CLI.
@@ -28,6 +28,17 @@ Generating a proving key and verifying key of zk-SNARKs, which are used for conf
 
 ```
 zeroc setup
+```
+
+### Run Zerochain nodes
+
+```
+./target/release/zerochain --dev
+```
+
+If you want to clear your old chain's history:
+```
+./target/release/zerochain purge-chain --dev
 ```
 
 #### Interacting with Zerochain
@@ -57,13 +68,13 @@ zeroc send -a 10 -s 416c69636520202020202020202020202020202020202020202020202020
 Get a decrypyed balance using the user's decryption key.
 
 ```
-zeroc balance -d <DECRYPTION KEY>
+zeroc wallet balance -d <DECRYPTION KEY>
 ```
 
 To get alice's balance...
 
 ```
-zeroc balance -d b0451b0bfab2830a75216779e010e0bfd2e6d0b4e4b1270dfcdfd0d538509e02
+zeroc wallet balance -d b0451b0bfab2830a75216779e010e0bfd2e6d0b4e4b1270dfcdfd0d538509e02
 ```
 
 ### Browser
@@ -71,7 +82,7 @@ zeroc balance -d b0451b0bfab2830a75216779e010e0bfd2e6d0b4e4b1270dfcdfd0d538509e0
 1. Setup for zkSNARKs from CLI
 - Get the proving key and the veifying key for zk-SNARKs
 ```
-./target/release/zero-chain-cli setup
+zeroc setup
 ```
 
 2. Run the nodes
@@ -91,12 +102,12 @@ https://github.com/LayerXcom/zero-chain-ui
 4. Generate the transaction from CLI
 - Generate the transaction components (Computing a zero-knowledge proofs and an encryption)
 ```
-./target/release/zero-chain-cli generate-tx
+zeroc generate-tx
 ```
 
 - For more information (if you want to set the customized amount and address)
 ```
-./target/release/zero-chain-cli generate-tx --help
+zeroc generate-tx --help
 ```
 
 5. Fill out the form:

@@ -1,1 +1,2 @@
-# Hierarchical Deterministic Wallets
+# Hierarchical Deterministic Keys
+

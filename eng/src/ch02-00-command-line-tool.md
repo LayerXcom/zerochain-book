@@ -62,3 +62,13 @@ zeroc snark setup
 zeroc send
 ```
 You will then be prompted to enter a transferred amount and a destination address.
+
+### Test for debug
+
+```
+zeroc test keys --alice
+```
+
+```
+zeroc test print-tx
+```

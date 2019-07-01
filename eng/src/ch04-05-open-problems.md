@@ -1,7 +1,7 @@
 # Open problems
 
-## Maiking trusted setup to (nearly) trustless setup
+### Trusted setup
 
-## Maiking the size of anonimity set to entire account set
+### Linearly scaling computational cost in terms of an anonimity set
 
-## Developing private smart contracts
+### Limited functionalities for privacy-protecting operations
