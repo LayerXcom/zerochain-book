@@ -3,7 +3,7 @@
 This documentation helps developers understand the core concepts of Zerochain and walk through the steps required to build Zerochain's node and send confidential transaction using Zerochain’s module.
 
 Zerochain is a generic privacy-protecting layer on top of Substrate. It provides some useful substrate modules and toolkit for protecting user's privacy and sensitive data stored on chain.
-Zerochain protocol itself is  a combined specification with Zether, Zcash, and of course Substrate.
+Zerochain protocol itself takes a hybrid solutions with Zether, Zcash, and of course Substrate.
 - Zether: High-level privacy scheme which takes an account-based approach
 - Zcash: Basis Zero-knowledge proving toolchain and keypair components
 - Substrate: Core blockchain layer which provides P2P networking, database, consensus engine, etc...

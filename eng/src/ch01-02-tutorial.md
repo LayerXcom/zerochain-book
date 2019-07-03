@@ -1,8 +1,6 @@
 # Turotial: Confidential payment
 
-This tutorial will explain the basic confidential transfer on Zerochain. Alice has the **encrypted** balance of 100 coins and sends **encrypted** 10 coins to Bob. So, Alice's balance will be 90 coins and Bob will get the 10 coins. All operations are done encrypted by ElGamal encryption and zk-SNARKs.
-
-(First of all, make sure zerochain is installed by [the following way](ch01-01-installation.md).)
+This tutorial will explain the basic confidential transfer on Zerochain. Alice has the **encrypted** balance of 10,000 coins and sends **encrypted** 100 coins to you. The encrypted fee will be subtracted from her balance. (By default, a base fee parameter is set to 1.) So, Alice's balance will be 9,899 coins and you will get the 100 coins. All operations are done encrypted by ElGamal encryption and zk-SNARKs.
 
 Currently, there are two ways to interact with Zerochain.
 
@@ -11,26 +9,28 @@ Currently, there are two ways to interact with Zerochain.
 
 Browser UI is not maintenanced well, so might not be working. It is recommended to use with CLI.
 
-### zeroc: Zerochain CLI
+In this tutorial, we assumed you've already done the all installation explained [previous section](ch01-01-installation.md).
 
-zeroc is a command-line utility which can interact with Zerochain.
+### 1. Initial setup
+First of all, you need to install [ZFace](ch02-00-zface.md) to interact with Zerochain. ZFace is basically a low-level wallet core and cryptographic tools for Zerochain.
 
-#### Initial setup
-
-- Install zeroc
+##### 1-1. Install ZFace (In the root zerochain directory)
 ```
-cargo install --force --path zeroc
+cargo install --force --path zface
 ```
 
-- Setup for zk-SNARKs
+Then, you can use CLI powerd by ZFace. Next thing you need to do for inisital setup is a preparation of zk-SNARKs parameters.
+
+##### 1-2. Setup for zk-SNARKs
 
 Generating a proving key and verifying key of zk-SNARKs, which are used for confidential payments.
 
 ```
-zeroc setup
+zface snark setup
 ```
 
-### Run Zerochain nodes
+### 2. Run Zerochain nodes
+Run a Zerochain node in other terminal screen. `--dev` flag is for specifying development mode.
 
 ```
 ./target/release/zerochain --dev
@@ -41,40 +41,68 @@ If you want to clear your old chain's history:
 ./target/release/zerochain purge-chain --dev
 ```
 
-#### Interacting with Zerochain
-
-- Generate key pairs
-
-Generate random key pairs(seed, decryption key, and encryption key(public key)).
-Alice's and Bob's key pairs are fixed and Alice already has some coins.
+### 3. Wallet creation
+Create a new zerochainc wallet.
 
 ```
-zeroc init
+wallet init
 ```
 
-- Send transaction for confidential payment
-```
-zeroc send -a <AMOUNT> -s <Sender's SEED> -to <Recipient's PUBLIC KEY>
-```
+You will then be prompted to enter a wallet password and a initial account name.
+**Please, note carefully the following mnemonic words. They will be needed to recover your wallet.**
 
-In the case, Alice sends 10 coins to Bob...
+<div align="center">
+<img src="https://user-images.githubusercontent.com/20852667/60558171-34957f00-9d83-11e9-9094-e446cb9b2ce7.png" width="900px">
+</div>
 
-```
-zeroc send -a 10 -s 416c696365202020202020202020202020202020202020202020202020202020 -to 45e66da531088b55dcb3b273ca825454d79d2d1d5c4fa2ba4a12c1fa1ccd6389
-```
+### 4. Interacting with Zerochain
 
-- Get balance
-
-Get a decrypyed balance using the user's decryption key.
+##### 4-1. Transfer initial minted coins to your account
+When you initialize your Zerochain, a specific Alice account has initial minted 10,000 coins (of couse, it is encrypted). You can transfer the encrypted coins from Alice to your just generated account by `debug` command.
 
 ```
-zeroc wallet balance -d <DECRYPTION KEY>
+zface debug send -t <YOUR ADDRESS> -a <AMOUNT>
 ```
 
-To get alice's balance...
+For example, the following command can transfer 100 coins to `5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i` address. The address is depending on your account. Please copy and pasted printed-out address.
 
 ```
-zeroc wallet balance -d b0451b0bfab2830a75216779e010e0bfd2e6d0b4e4b1270dfcdfd0d538509e02
+zface debug send -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i -a 100
+```
+
+
+##### 4-2. Check your balanace
+If the transferring coins was done successfully, your account should have 100 coins. You can check the balance by
+
+```
+zface wallet balance
+```
+
+You will then be prompted to enter your passoword.
+
+It's Done!
+
+### 4-3. (Advanced) Confidential payment between your accounts
+You also can transfer encypted coins to your other your account by the following commands.
+
+- Create other your account
+```
+zface wallet add-account
+```
+
+- Check your accounts list
+```
+zface wallet list
+```
+
+- Change default account to your first account who has 100 coins
+```
+zface wallet change-account -n <ACCOUNT_NAME>
+```
+
+- Transfer encrypted coins
+```
+zface tx send -t <ADDRESS> -a <AMOUNT>
 ```
 
 ### Browser
@@ -82,7 +110,7 @@ zeroc wallet balance -d b0451b0bfab2830a75216779e010e0bfd2e6d0b4e4b1270dfcdfd0d5
 1. Setup for zkSNARKs from CLI
 - Get the proving key and the veifying key for zk-SNARKs
 ```
-zeroc setup
+zface snark setup
 ```
 
 2. Run the nodes
@@ -102,12 +130,12 @@ https://github.com/LayerXcom/zero-chain-ui
 4. Generate the transaction from CLI
 - Generate the transaction components (Computing a zero-knowledge proofs and an encryption)
 ```
-zeroc generate-tx
+zeroc debug print-tx
 ```
 
 - For more information (if you want to set the customized amount and address)
 ```
-zeroc generate-tx --help
+zeroc debug print-tx --help
 ```
 
 5. Fill out the form:
