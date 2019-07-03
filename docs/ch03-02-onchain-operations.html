@@ -75,7 +75,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial.html"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payment</a></li><li><a href="ch01-03-add-modules.html"><strong aria-hidden="true">1.3.</strong> Adding Zerochain modules</a></li></ol></li><li><a href="ch02-00-command-line-tool.html"><strong aria-hidden="true">2.</strong> Command Line Tool</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html" class="active"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statement in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
+            <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial.html"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payment</a></li></ol></li><li><a href="ch02-00-zface.html"><strong aria-hidden="true">2.</strong> ZFace</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html" class="active"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statements in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -141,7 +141,14 @@
                 <div id="content" class="content">
                     <main>
                         <a class="header" href="#on-chain-operations" id="on-chain-operations"><h1>On-chain operations</h1></a>
-<p>(TODO)</p>
+<p>In the basic confidential payment scheme in <a href="https://github.com/LayerXcom/zero-chain/blob/master/runtime/src/conf_transfer.rs">conf_transfer module</a>, there is one public dispatchable function <code>confidential_transfer</code>. It takes some parameters such as a zero-knowledege proof, some ciphertexts and addresses.
+In this function, mainly three internal functions are called. First one is <code>roll_over</code> function for pending transfers which is explained later. <code>roll_over</code> allows us to send transactions asynchronously and protect from front-running attacks. We rollover an account in an epoch when the first message from this account is received, soone message rolls over only one account. To achieve this, we define a separate (internal) method for rolling over, and the first thing every other method does is to call this method.</p>
+<p>Second one is <code>validate_proof</code> function for varifying zk proofs. (For more details: <a href="ch03-03-statement-in-circuit.html">Statements in circuit</a>) Last one is mutating storage to add encrypted coins to recipient's encrypted balance and subtract it from sender's encrypted balance.</p>
+<a class="header" href="#pending-transfer" id="pending-transfer"><h2>Pending transfer</h2></a>
+<p>Zerochain uses a pending transfer strategy to prevent from front-running attacks. This attack is that a malicious attacker can watch alice's transaction and his transaction gets processed first, then alice's transaction will be rejected because the proof will not be valid anymore. More precisely, alice's encrypted balance is updated, so public input to <code>validate_proof</code> parameter is no longer correct.</p>
+<p>To solve this problems, we have <code>encrypted_balance</code> and <code>pending_transfer</code> mappings to store account's balances on-chain. <code>encrypted_balanace</code> is a actual balance mapping and <code>pending_transfer</code> is like a temporary storage in order to store incoming payments.</p>
+<p>Let's think a simple case that alice sends encrypted 5 coins to bob. The encrypted 5 coins will be stored bob's <code>pending_transfer</code> at first, not affect bob's <code>encrypted_balance</code>. In the next time when someone sends coins to bob or bob sends coins to someone, <code>rollover</code> function will be invoked and balances are transferred from <code>pending_transfer</code> map to <code>encrypted_balance</code> map.</p>
+<p>More details in Section 3.1: https://crypto.stanford.edu/~buenz/papers/zether.pdf</p>
 <a class="header" href="#subtracting-encrypted-fees" id="subtracting-encrypted-fees"><h2>Subtracting encrypted fees</h2></a>
 <p>Fees are subtracted from sender's encrypted balance based on <code>transaction_base_fee</code> storage key in the <code>conf_transfer</code> module.
 <code>transaction_base_fee</code> is set to <code>1</code> by default in <a href="https://github.com/LayerXcom/zero-chain/blob/67655966f3dd067011ea4fd215f128784b53ffd0/src/chain_spec.rs#L136">chain_spec.rs</a>.</p>
@@ -183,21 +190,6 @@
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         
