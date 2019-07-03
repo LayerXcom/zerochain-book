@@ -44,7 +44,7 @@ zface wallet list
 ### Change default account
 
 ```
-zface wallet
+zface wallet change-account -n <ACCOUNT_NAME>
 ```
 
 ### Recover a wallet from mnemonic
@@ -54,14 +54,6 @@ zface wallet recover
 ```
 
 You will then be prompted to enter a mnemonic to recover your wallet.
-
-### Change default account
-
-```
-zface wallet change-account
-```
-
-You will then be prompted to enter a account name.
 
 ### Get an account's balance
 
@@ -83,16 +75,23 @@ zface snark setup
 ### send
 
 ```
-zface send
+zface send -t <RECIPIENT_ADDRESS> -a <AMOUNT>
 ```
 You will then be prompted to enter a transferred amount and a destination address.
 
-### Test for debug
+## Test for debugging
 
+### Print key components
 ```
-zface test keys --alice
+zface debug key-init
 ```
 
+### Send tx for debuggin
 ```
-zface test print-tx
+zface debug send -s <SENDER_SEED> -t <RECPIENT_ADDRESS> -a <AMOUNT>
+```
+
+### Print transaction components
+```
+zface debug print-tx
 ```

@@ -82,7 +82,7 @@ You will then be prompted to enter your passoword.
 
 It's Done!
 
-### 4-3. (Advanced) Confidential payment between your accounts
+##### 4-3. (Advanced) Confidential payment between your accounts
 You also can transfer encypted coins to your other your account by the following commands.
 
 - Create other your account
@@ -100,7 +100,7 @@ zface wallet list
 zface wallet change-account -n <ACCOUNT_NAME>
 ```
 
-- Transfer encrypted coins
+- Transfer encrypted coins to your new account
 ```
 zface tx send -t <ADDRESS> -a <AMOUNT>
 ```
@@ -125,7 +125,7 @@ zface snark setup
 3. Run the UI apps
 
 The UI repository is here:
-https://github.com/LayerXcom/zero-chain-ui
+[https://github.com/LayerXcom/zero-chain-ui](https://github.com/LayerXcom/zero-chain-ui)
 
 4. Generate the transaction from CLI
 - Generate the transaction components (Computing a zero-knowledge proofs and an encryption)
