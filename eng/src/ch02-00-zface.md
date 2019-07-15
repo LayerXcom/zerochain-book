@@ -48,7 +48,7 @@ zface wallet change-account -n <ACCOUNT_NAME>
 ```
 
 ### Recover a wallet from mnemonic
-
+(TODO)
 ```
 zface wallet recover
 ```
@@ -61,11 +61,6 @@ You will then be prompted to enter a mnemonic to recover your wallet.
 zface wallet balance
 ```
 
-### Destory your wallet
-```
-zface wallet destory
-```
-
 ### Setup for zk-proving
 
 ```
@@ -75,7 +70,7 @@ zface snark setup
 ### send
 
 ```
-zface send -t <RECIPIENT_ADDRESS> -a <AMOUNT>
+zface tx send -t <RECIPIENT_ADDRESS> -a <AMOUNT>
 ```
 You will then be prompted to enter a transferred amount and a destination address.
 
