@@ -142,7 +142,7 @@
                     <main>
                         <a class="header" href="#introduction" id="introduction"><h1>Introduction</h1></a>
 <p>This documentation helps developers understand the core concepts of Zerochain and walk through the steps required to build Zerochain's node and send confidential transaction using Zerochain’s module.</p>
-<p>Zerochain is a generic privacy-protecting layer on top of Substrate. It provides some useful substrate modules and toolkit for protecting user's privacy and sensitive data stored on chain.
+<p>Zerochain is a generic privacy-protecting layer on top of Substrate. It provides some useful substrate modules and toolkit for protecting user's privacy and sensitive data which would be stored on chain.
 Zerochain protocol itself takes a hybrid solutions with Zether, Zcash, and of course Substrate.</p>
 <ul>
 <li>Zether: High-level privacy scheme which takes an account-based approach</li>
@@ -175,8 +175,6 @@ Zerochain protocol itself takes a hybrid solutions with Zether, Zcash, and of co
 <li>Zerochain's wallet don't need to run either full node or light client. Simply, it can send transactions via RPC API.</li>
 <li>Zerochain is an account-based blockchain so it can avoid UTXO accumulation and save the growing storage.</li>
 </ul>
-<a class="header" href="#technical-highlevel-overview" id="technical-highlevel-overview"><h2>Technical highlevel overview</h2></a>
-<p>Alice sends the encrypted 5 coins to on-chain as a component of transaction, then it will be added to the bob’s encrypted balance and subtracted it from her encrypted balance. Zero-knowledge proof convice a verifier(a verify function on blockchain) that the transferred amount and balance are under valid range and encryption algorithm is correct.</p>
 <a class="header" href="#getting-started" id="getting-started"><h1>Getting Started</h1></a>
 <p>In this section,  we will explain how to run Zerochain and send confidential/anonymous transactions.</p>
 <a class="header" href="#installation" id="installation"><h1>Installation</h1></a>
@@ -305,20 +303,18 @@ cargo build --release
 <pre><code>zface wallet change-account -n &lt;ACCOUNT_NAME&gt;
 </code></pre>
 <a class="header" href="#recover-a-wallet-from-mnemonic" id="recover-a-wallet-from-mnemonic"><h3>Recover a wallet from mnemonic</h3></a>
+<p>(TODO)</p>
 <pre><code>zface wallet recover
 </code></pre>
 <p>You will then be prompted to enter a mnemonic to recover your wallet.</p>
 <a class="header" href="#get-an-accounts-balance" id="get-an-accounts-balance"><h3>Get an account's balance</h3></a>
 <pre><code>zface wallet balance
 </code></pre>
-<a class="header" href="#destory-your-wallet" id="destory-your-wallet"><h3>Destory your wallet</h3></a>
-<pre><code>zface wallet destory
-</code></pre>
 <a class="header" href="#setup-for-zk-proving" id="setup-for-zk-proving"><h3>Setup for zk-proving</h3></a>
 <pre><code>zface snark setup
 </code></pre>
 <a class="header" href="#send" id="send"><h3>send</h3></a>
-<pre><code>zface send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>zface tx send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <p>You will then be prompted to enter a transferred amount and a destination address.</p>
 <a class="header" href="#test-for-debugging" id="test-for-debugging"><h2>Test for debugging</h2></a>
@@ -351,13 +347,12 @@ In this function, mainly three internal functions are called. First one is <code
 <p>Fees are subtracted from sender's encrypted balance based on <code>transaction_base_fee</code> storage key in the <code>conf_transfer</code> module.
 <code>transaction_base_fee</code> is set to <code>1</code> by default in <a href="https://github.com/LayerXcom/zero-chain/blob/67655966f3dd067011ea4fd215f128784b53ffd0/src/chain_spec.rs#L136">chain_spec.rs</a>.</p>
 <a class="header" href="#statement-in-circuit" id="statement-in-circuit"><h1>Statement in circuit</h1></a>
-<p>Circuit implementation can be found here: https://github.com/LayerXcom/zero-chain/blob/master/core/proofs/src/circuit/transfer.rs</p>
+<p>Circuit implementation can be found <a href="https://github.com/LayerXcom/zero-chain/blob/master/core/proofs/src/circuit/transfer.rs">here</a>.</p>
 <p>(TODO)</p>
 <a class="header" href="#technology" id="technology"><h1>Technology</h1></a>
 <p>In this section, we will explain core technologies which is used in Zerochain.</p>
 <a class="header" href="#zk-snarks" id="zk-snarks"><h1>zk-SNARKs</h1></a>
 <p>(TODO)</p>
-<a class="header" href="#highlevel-overview" id="highlevel-overview"><h2>Highlevel overview</h2></a>
 <a class="header" href="#encryption-scheme" id="encryption-scheme"><h1>Encryption scheme</h1></a>
 <p>All transferred amounts and account balances are encrypted in Zerochain, but you have to compute(add or sub) these with encrypted at the time of the payment.</p>
 <p>Zerochain achieves it by using the special encryption algorithm called “Additive homomorphic encryption”. As you can guess from the name, it can compute the addition(or subtraction) with encrypted. More specifically, Zerochain uses “Lifted-ElGamal encryption” to get efficient encryption and additive homomorphic property. (You can think it’s like Pedersen commitment in terms of additive homomorphic property, but Lifted-Elgamal is an asymmetric key encryption algorithm, not a commitment.)</p>
