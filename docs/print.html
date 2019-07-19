@@ -268,7 +268,7 @@ cargo build --release
 <ul>
 <li>Transfer encrypted coins to your new account</li>
 </ul>
-<pre><code>zface tx send -t &lt;ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>zface tx transfer -t &lt;ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <a class="header" href="#zface-an-interface-for-interacting-with-zerochain" id="zface-an-interface-for-interacting-with-zerochain"><h1>ZFace: An interface for interacting with Zerochain</h1></a>
 <p>(WIP)</p>
@@ -314,9 +314,20 @@ cargo build --release
 <pre><code>zface snark setup
 </code></pre>
 <a class="header" href="#send" id="send"><h3>send</h3></a>
-<pre><code>zface tx send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>zface tx transfer -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <p>You will then be prompted to enter a transferred amount and a destination address.</p>
+<a class="header" href="#managing-encrypted-assets" id="managing-encrypted-assets"><h3>Managing encrypted assets</h3></a>
+<ul>
+<li>Issue new encrypted assets</li>
+</ul>
+<pre><code>zface tx asset-issue -a &lt;AMOUNT&gt;
+</code></pre>
+<ul>
+<li>Send encrypted assets</li>
+</ul>
+<pre><code>zface tx asset-transfer -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt; -i &lt;ASSET_ID&gt;
+</code></pre>
 <a class="header" href="#test-for-debugging" id="test-for-debugging"><h2>Test for debugging</h2></a>
 <a class="header" href="#print-key-components" id="print-key-components"><h3>Print key components</h3></a>
 <pre><code>zface debug key-init

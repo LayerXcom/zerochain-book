@@ -70,9 +70,20 @@ zface snark setup
 ### send
 
 ```
-zface tx send -t <RECIPIENT_ADDRESS> -a <AMOUNT>
+zface tx transfer -t <RECIPIENT_ADDRESS> -a <AMOUNT>
 ```
 You will then be prompted to enter a transferred amount and a destination address.
+
+### Managing encrypted assets
+- Issue new encrypted assets
+```
+zface tx asset-issue -a <AMOUNT>
+```
+
+- Send encrypted assets
+```
+zface tx asset-transfer -t <RECIPIENT_ADDRESS> -a <AMOUNT> -i <ASSET_ID>
+```
 
 ## Test for debugging
 
