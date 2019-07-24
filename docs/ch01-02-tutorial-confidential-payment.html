@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Key components - Zerochain Book</title>
+        <title>Turotial: Confidential payment - Zerochain Book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,7 +75,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial-confidential-payment.html"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payment</a></li><li><a href="ch01-03-tutorial-encrypted-assets.html"><strong aria-hidden="true">1.3.</strong> Turotial: Encrypted fungible assets</a></li></ol></li><li><a href="ch02-00-zface.html"><strong aria-hidden="true">2.</strong> ZFace</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statements in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html" class="active"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
+            <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial-confidential-payment.html" class="active"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payment</a></li><li><a href="ch01-03-tutorial-encrypted-assets.html"><strong aria-hidden="true">1.3.</strong> Turotial: Encrypted fungible assets</a></li></ol></li><li><a href="ch02-00-zface.html"><strong aria-hidden="true">2.</strong> ZFace</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statements in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -140,33 +140,84 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#key-components" id="key-components"><h1>Key components</h1></a>
+                        <a class="header" href="#turotial-confidential-payment" id="turotial-confidential-payment"><h1>Turotial: Confidential payment</h1></a>
+<p>This tutorial will explain the basic confidential transfer on Zerochain. Alice has the <strong>encrypted</strong> balance of 10,000 coins and sends <strong>encrypted</strong> 100 coins to you. The encrypted fee will be subtracted from her balance. (By default, a base fee parameter is set to 1.) So, Alice's balance will be 9,899 coins and you will get the 100 coins. All operations are done encrypted by ElGamal encryption and zk-SNARKs.</p>
+<p>In this tutorial, we assumed you've already done the all installation explained <a href="ch01-01-installation.html">previous section</a>.</p>
+<a class="header" href="#1-initial-setup" id="1-initial-setup"><h3>1. Initial setup</h3></a>
+<p>First of all, you need to install <a href="ch02-00-zface.html">ZFace</a> to interact with Zerochain. ZFace is basically a low-level wallet core and cryptographic tools for Zerochain.</p>
+<a class="header" href="#1-1-install-zface-in-the-root-zerochain-directory" id="1-1-install-zface-in-the-root-zerochain-directory"><h5>1-1. Install ZFace (In the root zerochain directory)</h5></a>
+<pre><code>cargo install --force --path zface
+</code></pre>
+<p>Then, you can use CLI powerd by ZFace. Next thing you need to do for inisital setup is a preparation of zk-SNARKs parameters.</p>
+<a class="header" href="#1-2-setup-for-zk-snarks" id="1-2-setup-for-zk-snarks"><h5>1-2. Setup for zk-SNARKs</h5></a>
+<p>Generating a proving key and verifying key of zk-SNARKs, which are used for confidential payments.</p>
+<pre><code>zface snark setup
+</code></pre>
+<a class="header" href="#2-run-zerochain-nodes" id="2-run-zerochain-nodes"><h3>2. Run Zerochain nodes</h3></a>
+<p>Run a Zerochain node in other terminal screen. <code>--dev</code> flag is for specifying development mode.</p>
+<pre><code>./target/release/zerochain --dev
+</code></pre>
+<p>If you want to clear your old chain's history:</p>
+<pre><code>./target/release/zerochain purge-chain --dev
+</code></pre>
+<a class="header" href="#3-wallet-creation" id="3-wallet-creation"><h3>3. Wallet creation</h3></a>
+<p>Create a new zerochainc wallet.</p>
+<pre><code>wallet init
+</code></pre>
+<p>You will then be prompted to enter a wallet password and a initial account name.
+<strong>Please, note carefully the following mnemonic words. They will be needed to recover your wallet.</strong></p>
 <div align="center">
-<img src="https://user-images.githubusercontent.com/20852667/59552701-57731580-8fc5-11e9-8bee-ccf12e0cb051.png" width="600px">
+<img src="https://user-images.githubusercontent.com/20852667/60558171-34957f00-9d83-11e9-9094-e446cb9b2ce7.png" width="900px">
 </div>
-<p>These arrows are one-way. For example, you cannot derive a spending key from a decryption key, but you can derive a decryption key from a spending key.</p>
-<p>These bunch of keypairs allow us to get a auditability, zk-proofs delegation and hide a signer's identity.</p>
-<p>This key components scheme is modified and simplified version of zcash sapling's one to be compatible with Zerochain.</p>
-<a class="header" href="#signing-key" id="signing-key"><h3>Signing key</h3></a>
-<p>Every time you sign a transaction, a re-randomized signing key will be generated so that a signature will be different from the previous one. It helps to make it quite difficult to distinguish the sender's address because the signature of the same sender is no longer same.</p>
-<a class="header" href="#decryption-key" id="decryption-key"><h3>Decryption key</h3></a>
-<p>A decryption key works as a viewing key which allows only this key's owener to see the encrypted balance which is  stored on-chain.</p>
-<p>If you pass your decryption key to auditors, they can see your current balance, but cannot spend your coins of course.</p>
-<a class="header" href="#encryption-key" id="encryption-key"><h3>Encryption key</h3></a>
-<p>Encryption key is a public key can be used to encrypt all transferred amounts and balances.</p>
+<a class="header" href="#4-interacting-with-zerochain" id="4-interacting-with-zerochain"><h3>4. Interacting with Zerochain</h3></a>
+<a class="header" href="#4-1-transfer-initial-minted-coins-to-your-account" id="4-1-transfer-initial-minted-coins-to-your-account"><h5>4-1. Transfer initial minted coins to your account</h5></a>
+<p>When you initialize your Zerochain, a specific Alice account has initial minted 10,000 coins (of couse, it is encrypted). You can transfer the encrypted coins from Alice to your just generated account by <code>debug</code> command.</p>
+<pre><code>zface debug send -t &lt;YOUR ADDRESS&gt; -a &lt;AMOUNT&gt;
+</code></pre>
+<p>For example, the following command can transfer 100 coins to <code>5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i</code> address. The address is depending on your account. Please copy and pasted printed-out address.</p>
+<pre><code>zface debug send -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i -a 100
+</code></pre>
+<a class="header" href="#4-2-check-your-balanace" id="4-2-check-your-balanace"><h5>4-2. Check your balanace</h5></a>
+<p>If the transferring coins was done successfully, your account should have 100 coins. You can check the balance by</p>
+<pre><code>zface wallet balance
+</code></pre>
+<p>You will then be prompted to enter your passoword.</p>
+<a class="header" href="#4-3-confidential-payment-between-your-accounts" id="4-3-confidential-payment-between-your-accounts"><h5>4-3. Confidential payment between your accounts</h5></a>
+<p>You also can transfer encypted coins to your other your account by the following commands.</p>
+<ul>
+<li>Create other your account</li>
+</ul>
+<pre><code>zface wallet add-account
+</code></pre>
+<ul>
+<li>Check your accounts list</li>
+</ul>
+<pre><code>zface wallet list
+</code></pre>
+<ul>
+<li>Change default account to your first account who has 100 coins</li>
+</ul>
+<pre><code>zface wallet change-account -n &lt;ACCOUNT_NAME&gt;
+</code></pre>
+<ul>
+<li>Transfer encrypted coins to your new account</li>
+</ul>
+<pre><code>zface tx transfer -t &lt;ADDRESS&gt; -a &lt;AMOUNT&gt;
+</code></pre>
+<p>It's Done!</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="ch04-02-encryption.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="ch01-01-installation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="ch04-04-hierarchical-deterministic.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="ch01-03-tutorial-encrypted-assets.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -178,13 +229,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="ch04-02-encryption.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="ch01-01-installation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="ch04-04-hierarchical-deterministic.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="ch01-03-tutorial-encrypted-assets.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

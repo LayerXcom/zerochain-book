@@ -6,7 +6,8 @@
 
 - [Getting Started](ch01-00-getting-started.md)
     - [Installation](ch01-01-installation.md)
-    - [Turotial: Confidential payment](ch01-02-tutorial.md)
+    - [Turotial: Confidential payment](ch01-02-tutorial-confidential-payment.md)
+    - [Turotial: Encrypted fungible assets](ch01-03-tutorial-encrypted-assets.md)
 - [ZFace](ch02-00-zface.md)
 - [Confidential Payment](ch03-00-confidential-payment.md)
     - [Overview](ch03-01-overview.md)

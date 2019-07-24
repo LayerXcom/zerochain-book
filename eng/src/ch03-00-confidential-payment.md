@@ -1,5 +1,5 @@
 # Confidential Payment
 
-[runtime/src/conf_transfer.rs](https://github.com/LayerXcom/zero-chain/blob/master/runtime/src/conf_transfer.rs) provides a confidential payment module.
+The [encrypted-balances module](https://github.com/LayerXcom/zero-chain/tree/master/modules/encrypted-balances) provides a confidential payment module.
 
 In this section, we will explain what is "confidential payment" and how it works.

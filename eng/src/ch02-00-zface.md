@@ -27,7 +27,7 @@ You will then be prompted to enter a password. This password will be used to enc
 | Windows | {FOLDERID_LocalAppData}\zface | C:\Users\Alice\AppData\Local\zface |
 
 
-### Adding a account
+### Add a account
 You can add a new account into your wallet.
 
 ```
@@ -55,10 +55,15 @@ zface wallet recover
 
 You will then be prompted to enter a mnemonic to recover your wallet.
 
-### Get an account's balance
-
+### Get balances
+- Getting your current balance from `encrypted-balances` module
 ```
 zface wallet balance
+```
+
+- Getting your curernt balance from `encrypted-balances` module
+```
+zface wallet asset-balance -i <ASSET_ID>
 ```
 
 ### Setup for zk-proving
@@ -72,9 +77,8 @@ zface snark setup
 ```
 zface tx transfer -t <RECIPIENT_ADDRESS> -a <AMOUNT>
 ```
-You will then be prompted to enter a transferred amount and a destination address.
 
-### Managing encrypted assets
+### Manage encrypted assets
 - Issue new encrypted assets
 ```
 zface tx asset-issue -a <AMOUNT>
@@ -83,6 +87,11 @@ zface tx asset-issue -a <AMOUNT>
 - Send encrypted assets
 ```
 zface tx asset-transfer -t <RECIPIENT_ADDRESS> -a <AMOUNT> -i <ASSET_ID>
+```
+
+- Burn encrypted assets
+```
+zface tx asset-burn -i <ASSET_ID>
 ```
 
 ## Test for debugging

@@ -73,9 +73,7 @@ zface wallet balance
 
 You will then be prompted to enter your passoword.
 
-It's Done!
-
-##### 4-3. (Advanced) Confidential payment between your accounts
+##### 4-3. Confidential payment between your accounts
 You also can transfer encypted coins to your other your account by the following commands.
 
 - Create other your account
@@ -97,3 +95,4 @@ zface wallet change-account -n <ACCOUNT_NAME>
 ```
 zface tx transfer -t <ADDRESS> -a <AMOUNT>
 ```
+It's Done!
