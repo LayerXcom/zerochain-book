@@ -67,7 +67,7 @@ zface wallet asset-balance -i <ASSET_ID>
 ```
 
 ### Setup for zk-proving
-
+Generating a proving key and verifying key of zk-SNARKs.
 ```
 zface snark setup
 ```

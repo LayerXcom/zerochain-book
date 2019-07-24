@@ -4,38 +4,17 @@ This tutorial will explain the basic confidential transfer on Zerochain. Alice h
 
 In this tutorial, we assumed you've already done the all installation explained [previous section](ch01-01-installation.md).
 
-### 1. Initial setup
+### 1. Install ZFace
 First of all, you need to install [ZFace](ch02-00-zface.md) to interact with Zerochain. ZFace is basically a low-level wallet core and cryptographic tools for Zerochain.
 
-##### 1-1. Install ZFace (In the root zerochain directory)
 ```
 cargo install --force --path zface
 ```
 
-Then, you can use CLI powerd by ZFace. Next thing you need to do for inisital setup is a preparation of zk-SNARKs parameters.
+Then, you can use CLI powerd by ZFace.
 
-##### 1-2. Setup for zk-SNARKs
-
-Generating a proving key and verifying key of zk-SNARKs, which are used for confidential payments.
-
-```
-zface snark setup
-```
-
-### 2. Run Zerochain nodes
-Run a Zerochain node in other terminal screen. `--dev` flag is for specifying development mode.
-
-```
-./target/release/zerochain --dev
-```
-
-If you want to clear your old chain's history:
-```
-./target/release/zerochain purge-chain --dev
-```
-
-### 3. Wallet creation
-Create a new zerochainc wallet.
+### 2. Wallet creation
+Create a new zerochain wallet.
 
 ```
 wallet init
@@ -47,6 +26,18 @@ You will then be prompted to enter a wallet password and a initial account name.
 <div align="center">
 <img src="https://user-images.githubusercontent.com/20852667/60558171-34957f00-9d83-11e9-9094-e446cb9b2ce7.png" width="900px">
 </div>
+
+### 3. Run Zerochain nodes
+Run a Zerochain node in other terminal screen. `--dev` flag is for specifying development mode.
+
+```
+./target/release/zerochain --dev
+```
+
+If you want to clear your old chain's history:
+```
+./target/release/zerochain purge-chain --dev
+```
 
 ### 4. Interacting with Zerochain
 
