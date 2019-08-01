@@ -5,11 +5,11 @@ In this function, mainly three internal functions are called. First one is `roll
 Second one is `validate_proof` function for varifying zk proofs. (For more details: [Statements in circuit](ch03-03-statement-in-circuit.md)) Last one is mutating storage to add encrypted coins to recipient's encrypted balance and subtract it from sender's encrypted balance.
 
 ## Pending transfer
-Zerochain uses a pending transfer strategy to prevent from front-running attacks. This attack is that a malicious attacker can watch alice's transaction and his transaction gets processed first, then alice's transaction will be rejected because the proof will not be valid anymore. More precisely, alice's encrypted balance is updated, so public input to `validate_proof` parameter is no longer correct.
+Zerochain uses a pending transfer strategy to prevent from front-running attacks. This attack is that a malicious attacker can watch Alice's transaction and his transaction gets processed first, then Alice's transaction will be rejected because the proof will not be valid anymore. More precisely, Alice's encrypted balance is updated, so public input to `validate_proof` parameter is no longer correct.
 
 To solve this problems, we have `encrypted_balance` and `pending_transfer` mappings to store account's balances on-chain. `encrypted_balanace` is a actual balance mapping and `pending_transfer` is like a temporary storage in order to store incoming payments.
 
-Let's think a simple case that alice sends encrypted 5 coins to bob. The encrypted 5 coins will be stored bob's `pending_transfer` at first, not affect bob's `encrypted_balance`. In the next time when someone sends coins to bob or bob sends coins to someone, `rollover` function will be invoked and balances are transferred from `pending_transfer` map to `encrypted_balance` map.
+Let's think a simple case that Alice sends encrypted 5 coins to Bob. The encrypted 5 coins will be stored Bob's `pending_transfer` at first, not affect Bob's `encrypted_balance`. In the next time when someone sends coins to Bob or Bob sends coins to someone, `rollover` function will be invoked and balances are transferred from `pending_transfer` map to `encrypted_balance` map.
 
 More details in Section 3.1: https://crypto.stanford.edu/~buenz/papers/zether.pdf
 

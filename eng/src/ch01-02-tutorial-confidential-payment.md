@@ -17,7 +17,7 @@ Then, you can use CLI powerd by ZFace.
 Create a new zerochain wallet.
 
 ```
-wallet init
+zface wallet init
 ```
 
 You will then be prompted to enter a wallet password and a initial account name.
@@ -42,7 +42,7 @@ If you want to clear your old chain's history:
 ### 4. Interacting with Zerochain
 
 ##### 4-1. Transfer initial minted coins to your account
-When you initialize your Zerochain, a specific Alice account has initial minted 10,000 coins (of couse, it is encrypted). You can transfer the encrypted coins from Alice to your just generated account by `debug` command.
+When you initialize your Zerochain, a specific Alice account has initial minted 10,000 coins (of course, it is encrypted). You can transfer the encrypted coins from Alice to your just generated account by `debug` command.
 
 ```
 zface debug send -t <YOUR ADDRESS> -a <AMOUNT>
