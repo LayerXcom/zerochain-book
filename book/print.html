@@ -215,7 +215,7 @@ cargo build --release
 <p>Then, you can use CLI powerd by ZFace.</p>
 <a class="header" href="#2-wallet-creation" id="2-wallet-creation"><h3>2. Wallet creation</h3></a>
 <p>Create a new zerochain wallet.</p>
-<pre><code>wallet init
+<pre><code>zface wallet init
 </code></pre>
 <p>You will then be prompted to enter a wallet password and a initial account name.
 <strong>Please, note carefully the following mnemonic words. They will be needed to recover your wallet.</strong></p>
@@ -231,7 +231,7 @@ cargo build --release
 </code></pre>
 <a class="header" href="#4-interacting-with-zerochain" id="4-interacting-with-zerochain"><h3>4. Interacting with Zerochain</h3></a>
 <a class="header" href="#4-1-transfer-initial-minted-coins-to-your-account" id="4-1-transfer-initial-minted-coins-to-your-account"><h5>4-1. Transfer initial minted coins to your account</h5></a>
-<p>When you initialize your Zerochain, a specific Alice account has initial minted 10,000 coins (of couse, it is encrypted). You can transfer the encrypted coins from Alice to your just generated account by <code>debug</code> command.</p>
+<p>When you initialize your Zerochain, a specific Alice account has initial minted 10,000 coins (of course, it is encrypted). You can transfer the encrypted coins from Alice to your just generated account by <code>debug</code> command.</p>
 <pre><code>zface debug send -t &lt;YOUR ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <p>For example, the following command can transfer 100 coins to <code>5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i</code> address. The address is depending on your account. Please copy and pasted printed-out address.</p>
@@ -377,9 +377,9 @@ cargo build --release
 In this function, mainly three internal functions are called. First one is <code>roll_over</code> function for pending transfers which is explained later. <code>roll_over</code> allows us to send transactions asynchronously and protect from front-running attacks. We rollover an account in an epoch when the first message from this account is received, soone message rolls over only one account. To achieve this, we define a separate (internal) method for rolling over, and the first thing every other method does is to call this method.</p>
 <p>Second one is <code>validate_proof</code> function for varifying zk proofs. (For more details: <a href="ch03-03-statement-in-circuit.html">Statements in circuit</a>) Last one is mutating storage to add encrypted coins to recipient's encrypted balance and subtract it from sender's encrypted balance.</p>
 <a class="header" href="#pending-transfer" id="pending-transfer"><h2>Pending transfer</h2></a>
-<p>Zerochain uses a pending transfer strategy to prevent from front-running attacks. This attack is that a malicious attacker can watch alice's transaction and his transaction gets processed first, then alice's transaction will be rejected because the proof will not be valid anymore. More precisely, alice's encrypted balance is updated, so public input to <code>validate_proof</code> parameter is no longer correct.</p>
+<p>Zerochain uses a pending transfer strategy to prevent from front-running attacks. This attack is that a malicious attacker can watch Alice's transaction and his transaction gets processed first, then Alice's transaction will be rejected because the proof will not be valid anymore. More precisely, Alice's encrypted balance is updated, so public input to <code>validate_proof</code> parameter is no longer correct.</p>
 <p>To solve this problems, we have <code>encrypted_balance</code> and <code>pending_transfer</code> mappings to store account's balances on-chain. <code>encrypted_balanace</code> is a actual balance mapping and <code>pending_transfer</code> is like a temporary storage in order to store incoming payments.</p>
-<p>Let's think a simple case that alice sends encrypted 5 coins to bob. The encrypted 5 coins will be stored bob's <code>pending_transfer</code> at first, not affect bob's <code>encrypted_balance</code>. In the next time when someone sends coins to bob or bob sends coins to someone, <code>rollover</code> function will be invoked and balances are transferred from <code>pending_transfer</code> map to <code>encrypted_balance</code> map.</p>
+<p>Let's think a simple case that Alice sends encrypted 5 coins to Bob. The encrypted 5 coins will be stored Bob's <code>pending_transfer</code> at first, not affect Bob's <code>encrypted_balance</code>. In the next time when someone sends coins to Bob or Bob sends coins to someone, <code>rollover</code> function will be invoked and balances are transferred from <code>pending_transfer</code> map to <code>encrypted_balance</code> map.</p>
 <p>More details in Section 3.1: https://crypto.stanford.edu/~buenz/papers/zether.pdf</p>
 <a class="header" href="#subtracting-encrypted-fees" id="subtracting-encrypted-fees"><h2>Subtracting encrypted fees</h2></a>
 <p>Fees are subtracted from sender's encrypted balance based on <code>transaction_base_fee</code> storage key in the <code>conf_transfer</code> module.
@@ -455,6 +455,21 @@ In this function, mainly three internal functions are called. First one is <code
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

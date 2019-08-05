@@ -150,7 +150,7 @@
 <p>Then, you can use CLI powerd by ZFace.</p>
 <a class="header" href="#2-wallet-creation" id="2-wallet-creation"><h3>2. Wallet creation</h3></a>
 <p>Create a new zerochain wallet.</p>
-<pre><code>wallet init
+<pre><code>zface wallet init
 </code></pre>
 <p>You will then be prompted to enter a wallet password and a initial account name.
 <strong>Please, note carefully the following mnemonic words. They will be needed to recover your wallet.</strong></p>
@@ -166,7 +166,7 @@
 </code></pre>
 <a class="header" href="#4-interacting-with-zerochain" id="4-interacting-with-zerochain"><h3>4. Interacting with Zerochain</h3></a>
 <a class="header" href="#4-1-transfer-initial-minted-coins-to-your-account" id="4-1-transfer-initial-minted-coins-to-your-account"><h5>4-1. Transfer initial minted coins to your account</h5></a>
-<p>When you initialize your Zerochain, a specific Alice account has initial minted 10,000 coins (of couse, it is encrypted). You can transfer the encrypted coins from Alice to your just generated account by <code>debug</code> command.</p>
+<p>When you initialize your Zerochain, a specific Alice account has initial minted 10,000 coins (of course, it is encrypted). You can transfer the encrypted coins from Alice to your just generated account by <code>debug</code> command.</p>
 <pre><code>zface debug send -t &lt;YOUR ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <p>For example, the following command can transfer 100 coins to <code>5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i</code> address. The address is depending on your account. Please copy and pasted printed-out address.</p>
@@ -238,6 +238,21 @@
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         
