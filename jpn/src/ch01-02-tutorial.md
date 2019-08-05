@@ -1,1 +1,0 @@
-# Turotial: Confidential payment
