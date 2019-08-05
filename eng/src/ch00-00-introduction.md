@@ -12,7 +12,7 @@ Zerochain protocol (v1) combines with solutions of the Zether and Zcash toolchai
 <img src="https://user-images.githubusercontent.com/20852667/59009598-33972d80-8869-11e9-922b-1f86e18455a8.png" width="500px">
 </div>
 
-The first goal of Zerochain is to provide a secure and efficient confidential and anonymous payment protocol for fungible assets. This requirements are that
+The first goal of Zerochain is to provide a secure and efficient confidential and anonymous payment protocol for fungible assets. The requirements are that
 - Transferred amounts are private.
 - Each account balance is private.
 - Identities of transactors are private.
