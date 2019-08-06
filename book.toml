@@ -3,3 +3,6 @@ authors = ["Osuke Sudo"]
 multilingual = false
 src = "src"
 title = "Zerochain Book"
+
+[build]
+build-dir = "docs"
