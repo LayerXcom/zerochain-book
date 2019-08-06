@@ -141,39 +141,39 @@
                 <div id="content" class="content">
                     <main>
                         <a class="header" href="#introduction" id="introduction"><h1>Introduction</h1></a>
-<p>This documentation helps developers understand the core concepts of Zerochain and walk through the steps required to build Zerochain's node and send confidential transaction using Zerochain’s module.</p>
-<p>Zerochain is a generic privacy-protecting layer on top of Substrate. It provides some useful substrate modules and toolkit for protecting user's privacy and sensitive data which would be stored on chain.
-Zerochain protocol(v1) itself takes a hybrid solutions with Zether, Zcash toolchain, and of course Substrate.</p>
+<p>This documentation helps developers understand the core concepts of Zerochain and walks through the steps required to build a Zerochain node and send confidential transactions using Zerochain’s module.</p>
+<p>Zerochain is a generic, privacy-protecting layer on top of Substrate. It provides substrate modules and a toolkit for protecting the user's identity and sensitive data that is stored on chain.
+Zerochain protocol (v1) combines with solutions of the Zether and Zcash toolchain and of course Substrate.</p>
 <ul>
-<li>Zether: High-level privacy scheme which takes an account-based approach</li>
-<li>Zcash toolchain: Basis Zero-knowledge proving system and elliptic curve operations</li>
-<li>Substrate: Core blockchain layer which provides P2P networking, database, consensus engine, etc...</li>
+<li>Zether is a high-level privacy scheme which takes an account-based approach.</li>
+<li>The Zcash toolchain is a Zero-knowledge proving system with elliptic curve operations.</li>
+<li>Substrate is a blockchain layer which provides core components such as P2P networking, database, and a consensus engine.</li>
 </ul>
 <div align="center">
 <img src="https://user-images.githubusercontent.com/20852667/59009598-33972d80-8869-11e9-922b-1f86e18455a8.png" width="500px">
 </div>
-<p>The first goal for Zerochain is providing secure and efficient confidential/anonimous payment protocol for fungible assets. It means</p>
+<p>The first goal of Zerochain is to provide a secure and efficient confidential and anonymous payment protocol for fungible assets. The requirements are that</p>
 <ul>
-<li>Transferred amounts are private</li>
-<li>Each account balance is private</li>
-<li>Identities of transactors are private</li>
+<li>Transferred amounts are private.</li>
+<li>Each account balance is private.</li>
+<li>Identities of transactors are private.</li>
 </ul>
 <div align="center">
 <img src="https://user-images.githubusercontent.com/20852667/54678399-6d00ac80-4b48-11e9-9c8d-d1ec2b668761.png" width="500px">
 </div>
-<p>Core features of Zerochain are following:</p>
+<p>Core features of Zerochain are</p>
 <ul>
-<li>Efficient computational cost of zk-proving and verifying</li>
-<li>Providing auditability for each account</li>
-<li>Storage friendly confidentiality from wallet and blockchain perspective</li>
+<li>Efficient computational cost of zk-proofs and verification.</li>
+<li>Auditability for each account.</li>
+<li>Storage friendly confidentiality from the point of view of both the wallet and blockchain.</li>
 </ul>
-<p>More precisely,</p>
+<p>More precisely</p>
 <ul>
-<li>Computational cost tends to be huge for zero-knowledge proving in general. Zerochain uses pre-processing zk-SNARKS which is kind of ZK proving systems and provides even small computational cost and proof size, there are some trade-off though.</li>
-<li>Statement in zk-SNARKs is based on Zether protocol so that prover computational cost is even less compairing other privacy-protecting protocols.</li>
-<li>Users can allow auditors to see how much they have balances by giving thier viewing key, but auditors cannot spend user's money by using it.</li>
-<li>Zerochain's wallet don't need to run either full node or light client. Simply, it can send transactions via RPC API.</li>
-<li>Zerochain is an account-based blockchain so it can avoid UTXO accumulation and save the growing storage.</li>
+<li>In general, computational costs tend to be huge for zero-knowledge proofs. Zerochain uses pre-processing zk-SNARKS which is a kind of ZK proving systems that has low computational cost and small proof size. There are, however, some trade-offs.</li>
+<li>Statements in zk-SNARK are based on the Zether protocol so that computational cost of the proof is less than other privacy-protecting protocols.</li>
+<li>Users can allow auditors to observe account balances by using a viewing key but auditors cannot use the key to spend the user's money.</li>
+<li>Zerochain's wallet doesn't need to run either full node or light client. It can simply send transactions using an RPC API.</li>
+<li>Zerochain is an account-based blockchain so it can avoid UTXO accumulation and minimize storage.</li>
 </ul>
 <a class="header" href="#getting-started" id="getting-started"><h1>Getting Started</h1></a>
 <p>In this section,  we will explain how to run Zerochain and send confidential/anonymous transactions.</p>
