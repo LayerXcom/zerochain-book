@@ -4,6 +4,10 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Zerochain Book</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,7 +60,7 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             document.body.className = theme;
             document.querySelector('html').className = theme + ' js';
@@ -75,7 +79,10 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial-confidential-payment.html"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payment</a></li><li><a href="ch01-03-tutorial-encrypted-assets.html"><strong aria-hidden="true">1.3.</strong> Turotial: Encrypted fungible assets</a></li></ol></li><li><a href="ch02-00-zface.html"><strong aria-hidden="true">2.</strong> ZFace</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statements in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial-confidential-payment.html"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payments</a></li><li><a href="ch01-03-tutorial-encrypted-assets.html"><strong aria-hidden="true">1.3.</strong> Turotial: Encrypted fungible assets</a></li><li><a href="ch01-04-tutorial-anonymous-payment.html"><strong aria-hidden="true">1.4.</strong> Tutorial: Anonymous payments</a></li></ol></li><li><a href="ch02-00-zface.html"><strong aria-hidden="true">2.</strong> ZFace</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statements in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -105,7 +112,7 @@
                             
                         </div>
 
-                        <h1 class="menu-title">Zerochain Book</h1> 
+                        <h1 class="menu-title">Zerochain Book</h1>
 
                         <div class="right-buttons">
                             <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -140,7 +147,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#introduction" id="introduction"><h1>Introduction</h1></a>
+                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
 <p>This documentation helps developers understand the core concepts of Zerochain and walks through the steps required to build a Zerochain node and send confidential transactions using Zerochain’s module.</p>
 <p>Zerochain is a generic, privacy-protecting layer on top of Substrate. It provides substrate modules and a toolkit for protecting the user's identity and sensitive data that is stored on chain.
 Zerochain protocol (v1) combines with solutions of the Zether and Zcash toolchain and of course Substrate.</p>
@@ -175,10 +182,10 @@ Zerochain protocol (v1) combines with solutions of the Zether and Zcash toolchai
 <li>Zerochain's wallet doesn't need to run either full node or light client. It can simply send transactions using an RPC API.</li>
 <li>Zerochain is an account-based blockchain so it can avoid UTXO accumulation and minimize storage.</li>
 </ul>
-<a class="header" href="#getting-started" id="getting-started"><h1>Getting Started</h1></a>
+<h1><a class="header" href="#getting-started" id="getting-started">Getting Started</a></h1>
 <p>In this section,  we will explain how to run Zerochain and send confidential/anonymous transactions.</p>
-<a class="header" href="#installation" id="installation"><h1>Installation</h1></a>
-<a class="header" href="#initial-setup" id="initial-setup"><h2>Initial Setup</h2></a>
+<h1><a class="header" href="#installation" id="installation">Installation</a></h1>
+<h2><a class="header" href="#initial-setup" id="initial-setup">Initial Setup</a></h2>
 <p>Setup latest rust environment.</p>
 <pre><code>curl https://sh.rustup.rs -sSf | sh
 
@@ -198,22 +205,22 @@ cargo +nightly install --git https://github.com/alexcrichton/wasm-gc
 </ul>
 <pre><code>sudo apt install cmake pkg-config libssl-dev git clang libclang-dev
 </code></pre>
-<a class="header" href="#building" id="building"><h2>Building</h2></a>
+<h2><a class="header" href="#building" id="building">Building</a></h2>
 <p>Zerochan, then, can be building.</p>
 <pre><code>git clone git@github.com:LayerXcom/zero-chain.git
 cd zero-chain
 ./build.sh
 cargo build --release
 </code></pre>
-<a class="header" href="#turotial-confidential-payment" id="turotial-confidential-payment"><h1>Turotial: Confidential payment</h1></a>
+<h1><a class="header" href="#turotial-confidential-payment" id="turotial-confidential-payment">Turotial: Confidential payment</a></h1>
 <p>This tutorial will explain the basic confidential transfer on Zerochain. Alice has the <strong>encrypted</strong> balance of 10,000 coins and sends <strong>encrypted</strong> 100 coins to you. The encrypted fee will be subtracted from her balance. (By default, a base fee parameter is set to 1.) So, Alice's balance will be 9,899 coins and you will get the 100 coins. All operations are done encrypted by ElGamal encryption and zk-SNARKs.</p>
 <p>In this tutorial, we assumed you've already done the all installation explained <a href="ch01-01-installation.html">previous section</a>.</p>
-<a class="header" href="#1-install-zface" id="1-install-zface"><h3>1. Install ZFace</h3></a>
+<h3><a class="header" href="#1-install-zface" id="1-install-zface">1. Install ZFace</a></h3>
 <p>First of all, you need to install <a href="ch02-00-zface.html">ZFace</a> to interact with Zerochain. ZFace is basically a low-level wallet core and cryptographic tools for Zerochain.</p>
 <pre><code>cargo install --force --path zface
 </code></pre>
 <p>Then, you can use CLI powerd by ZFace.</p>
-<a class="header" href="#2-wallet-creation" id="2-wallet-creation"><h3>2. Wallet creation</h3></a>
+<h3><a class="header" href="#2-wallet-creation" id="2-wallet-creation">2. Wallet creation</a></h3>
 <p>Create a new zerochain wallet.</p>
 <pre><code>zface wallet init
 </code></pre>
@@ -222,27 +229,27 @@ cargo build --release
 <div align="center">
 <img src="https://user-images.githubusercontent.com/20852667/60558171-34957f00-9d83-11e9-9094-e446cb9b2ce7.png" width="900px">
 </div>
-<a class="header" href="#3-run-zerochain-nodes" id="3-run-zerochain-nodes"><h3>3. Run Zerochain nodes</h3></a>
+<h3><a class="header" href="#3-run-zerochain-nodes" id="3-run-zerochain-nodes">3. Run Zerochain nodes</a></h3>
 <p>Run a Zerochain node in other terminal screen. <code>--dev</code> flag is for specifying development mode.</p>
 <pre><code>./target/release/zerochain --dev
 </code></pre>
 <p>If you want to clear your old chain's history:</p>
 <pre><code>./target/release/zerochain purge-chain --dev
 </code></pre>
-<a class="header" href="#4-interacting-with-zerochain" id="4-interacting-with-zerochain"><h3>4. Interacting with Zerochain</h3></a>
-<a class="header" href="#4-1-transfer-initial-minted-coins-to-your-account" id="4-1-transfer-initial-minted-coins-to-your-account"><h5>4-1. Transfer initial minted coins to your account</h5></a>
+<h3><a class="header" href="#4-interacting-with-zerochain" id="4-interacting-with-zerochain">4. Interacting with Zerochain</a></h3>
+<h5><a class="header" href="#4-1-transfer-initial-minted-coins-to-your-account" id="4-1-transfer-initial-minted-coins-to-your-account">4-1. Transfer initial minted coins to your account</a></h5>
 <p>When you initialize your Zerochain, a specific Alice account has initial minted 10,000 coins (of course, it is encrypted). You can transfer the encrypted coins from Alice to your just generated account by <code>debug</code> command.</p>
 <pre><code>zface debug send -t &lt;YOUR ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <p>For example, the following command can transfer 100 coins to <code>5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i</code> address. The address is depending on your account. Please copy and pasted printed-out address.</p>
 <pre><code>zface debug send -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i -a 100
 </code></pre>
-<a class="header" href="#4-2-check-your-balanace" id="4-2-check-your-balanace"><h5>4-2. Check your balanace</h5></a>
+<h5><a class="header" href="#4-2-check-your-balanace" id="4-2-check-your-balanace">4-2. Check your balanace</a></h5>
 <p>If the transferring coins was done successfully, your account should have 100 coins. You can check the balance by</p>
 <pre><code>zface wallet balance
 </code></pre>
 <p>You will then be prompted to enter your passoword.</p>
-<a class="header" href="#4-3-confidential-payment-between-your-accounts" id="4-3-confidential-payment-between-your-accounts"><h5>4-3. Confidential payment between your accounts</h5></a>
+<h5><a class="header" href="#4-3-confidential-payment-between-your-accounts" id="4-3-confidential-payment-between-your-accounts">4-3. Confidential payment between your accounts</a></h5>
 <p>You also can transfer encypted coins to your other your account by the following commands.</p>
 <ul>
 <li>Create other your account</li>
@@ -262,29 +269,44 @@ cargo build --release
 <ul>
 <li>Transfer encrypted coins to your new account</li>
 </ul>
-<pre><code>zface tx transfer -t &lt;ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>zface tx send -t &lt;ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <p>It's Done!</p>
-<a class="header" href="#turotial-encrypted-fungible-assets" id="turotial-encrypted-fungible-assets"><h1>Turotial: Encrypted fungible assets</h1></a>
+<h1><a class="header" href="#turotial-encrypted-fungible-assets" id="turotial-encrypted-fungible-assets">Turotial: Encrypted fungible assets</a></h1>
 <p>In this tutorial, we'll exlapin how you can manage your encrypted fungible assets in Zerochan. We provide a special substrate module called <a href="https://github.com/LayerXcom/zero-chain/tree/master/modules/encrypted-assets"><code>encrypted-assets</code></a> module in order to mint, burn, and transfer encrypted assets. These assets are encrypted on-chain, so no-one can see the actual amounts without its decryption key. Each assets has an unique <code>asset-id</code> to be managed as separated assets.</p>
 <p>We expect you to install ZFace, create your wallet, and run Zerochain following <a href="ch01-02-tutorial-confidential-payment.html">the section1~3 in this page</a>.</p>
-<a class="header" href="#1-mint-100-encrypted-coins" id="1-mint-100-encrypted-coins"><h3>1. Mint 100 encrypted coins</h3></a>
+<h3><a class="header" href="#1-mint-100-encrypted-coins" id="1-mint-100-encrypted-coins">1. Mint 100 encrypted coins</a></h3>
 <p>You can mint your encrypted assets by the following commands. The amount is specified <code>100</code> and the asset-id is automatically determined as a unique number. You can fetch the asset-id by the event.</p>
 <pre><code>zface tx asset-issue -a 100
 </code></pre>
-<a class="header" href="#2-transfer-encrypted-asset" id="2-transfer-encrypted-asset"><h3>2. Transfer encrypted asset</h3></a>
+<h3><a class="header" href="#2-transfer-encrypted-asset" id="2-transfer-encrypted-asset">2. Transfer encrypted asset</a></h3>
 <p>Let's transfer 20 encrypted-coins to the address <code>5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i</code>(This address is depending on your wallet account). The asset-id of initial minted assets is <code>0</code>, so you need to specify it.</p>
-<pre><code>zface tx asset-transfer -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
+<pre><code>zface tx asset-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
 </code></pre>
-<a class="header" href="#3-check-your-current-balance-of-encrypted-assets" id="3-check-your-current-balance-of-encrypted-assets"><h3>3. Check your current balance of encrypted assets</h3></a>
+<h3><a class="header" href="#3-check-your-current-balance-of-encrypted-assets" id="3-check-your-current-balance-of-encrypted-assets">3. Check your current balance of encrypted assets</a></h3>
 <p>You just transferred 20 assets to other address and are subtracted 1 assets as fee, so you're supposed to have 79 assets.</p>
 <pre><code>zface wallet asset-balance -i 0
 </code></pre>
-<a class="header" href="#4-burn-encrypted-asset" id="4-burn-encrypted-asset"><h3>4. Burn encrypted asset</h3></a>
+<h3><a class="header" href="#4-burn-encrypted-asset" id="4-burn-encrypted-asset">4. Burn encrypted asset</a></h3>
 <p>To burn your encrypted assets, just specify the asset-id and then destroy the assets.</p>
 <pre><code>zface tx asset-burn -i 0
 </code></pre>
-<a class="header" href="#zface-an-interface-for-interacting-with-zerochain" id="zface-an-interface-for-interacting-with-zerochain"><h1>ZFace: An interface for interacting with Zerochain</h1></a>
+<h1><a class="header" href="#tutorial-anonymous-payments" id="tutorial-anonymous-payments">Tutorial: Anonymous payments</a></h1>
+<p>In this tutorial, we'll explain how you can send transactions in an anonymous manner. We provide a special Substrate module called <a href="https://github.com/LayerXcom/zero-chain/tree/master/modules/anonymous-balances"><code>anonymous-balances</code></a> module. User's coins managed in the <code>anonymous-balances</code> modules are encrypted in the same way as <code>encrypted-balances</code> module. To get an anonimous features, more precisely obfuscating features, some dummy addresses are added to a target address set in a transaction, so that an actual recipient address and dummy addresses cannot be distinguishable from the other people perspective.</p>
+<p>For following the tutorial, we expect you to already install ZFace, create your wallet, and run Zerochain, see <a href="ch01-02-tutorial-confidential-payment.html">the section1~3 in this page</a>.</p>
+<h3><a class="header" href="#1-mint-100-encrypted-coins-1" id="1-mint-100-encrypted-coins-1">1. Mint 100 encrypted coins</a></h3>
+<p>You can mint your encrypted coins by the following commands. This issue method isn't anonymous way but confidential way.</p>
+<pre><code>zface tx anonymous-issue -a 100
+</code></pre>
+<h3><a class="header" href="#2-send-an-anonymous-transaction" id="2-send-an-anonymous-transaction">2. Send an anonymous transaction</a></h3>
+<p>Let's transfer 20 encrypted-coins to the address <code>5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i</code>(This address is depending on your wallet account). Some dummy addresses are automatically added to the transaction so that other people cannot see where it came from and went to.</p>
+<pre><code>zface tx anonymous-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
+</code></pre>
+<h3><a class="header" href="#3-check-your-current-balance" id="3-check-your-current-balance">3. Check your current balance</a></h3>
+<p>You just transferred 20 assets to other address, so you're supposed to have 80 assets.</p>
+<pre><code>zface wallet anonymous-balance
+</code></pre>
+<h1><a class="header" href="#zface-an-interface-for-interacting-with-zerochain" id="zface-an-interface-for-interacting-with-zerochain">ZFace: An interface for interacting with Zerochain</a></h1>
 <p>(WIP)</p>
 <p>ZFace is a low-level wallet core and cryptographic tools for Zerochain.</p>
 <p>In this section, we explained the usage of CLI tools powered by ZFace. The CLI tool has mainly four subcommands which is explained later.</p>
@@ -294,34 +316,34 @@ cargo build --release
 <li>tx: Operatipons around sending transactions to Zerochain</li>
 <li>debug: Debugging and testing commands</li>
 </ul>
-<a class="header" href="#creating-a-new-wallet" id="creating-a-new-wallet"><h3>Creating a new wallet</h3></a>
+<h3><a class="header" href="#creating-a-new-wallet" id="creating-a-new-wallet">Creating a new wallet</a></h3>
 <p>For security reasons, the cryptographic materials are stored encryped by providing a password.</p>
 <p>To do this, run:</p>
 <pre><code>zface wallet init
 </code></pre>
 <p>You will then be prompted to enter a password. This password will be used to encrypt your mnemonics of your wallet. Wallet files are stored in zface directory located in the following path.</p>
-<table><thead><tr><th>Platform </th><th> Value </th><th> Example </th></tr></thead><tbody>
-<tr><td> Linux </td><td> $XDG_DATA_HOME or $HOME/.local/share/zface </td><td> /home/alice/.local/share/zface </td></tr>
-<tr><td> macOS </td><td> $HOME/Library/Application Support/zface </td><td> /Users/Alice/Library/Application Support/zface </td></tr>
-<tr><td> Windows </td><td> {FOLDERID_LocalAppData}\zface </td><td> C:\Users\Alice\AppData\Local\zface </td></tr>
-</tbody></table>
-<a class="header" href="#add-a-account" id="add-a-account"><h3>Add a account</h3></a>
+<p>|Platform | Value | Example |
+----|----
+| Linux | $XDG_DATA_HOME or $HOME/.local/share/zface | /home/alice/.local/share/zface |
+| macOS | $HOME/Library/Application Support/zface | /Users/Alice/Library/Application Support/zface |
+| Windows | {FOLDERID_LocalAppData}\zface | C:\Users\Alice\AppData\Local\zface |</p>
+<h3><a class="header" href="#add-a-account" id="add-a-account">Add a account</a></h3>
 <p>You can add a new account into your wallet.</p>
 <pre><code>zface wallet add-account
 </code></pre>
-<a class="header" href="#show-accounts-list" id="show-accounts-list"><h3>Show accounts list</h3></a>
+<h3><a class="header" href="#show-accounts-list" id="show-accounts-list">Show accounts list</a></h3>
 <p>It will show your accounts in your wallet.</p>
 <pre><code>zface wallet list
 </code></pre>
-<a class="header" href="#change-default-account" id="change-default-account"><h3>Change default account</h3></a>
+<h3><a class="header" href="#change-default-account" id="change-default-account">Change default account</a></h3>
 <pre><code>zface wallet change-account -n &lt;ACCOUNT_NAME&gt;
 </code></pre>
-<a class="header" href="#recover-a-wallet-from-mnemonic" id="recover-a-wallet-from-mnemonic"><h3>Recover a wallet from mnemonic</h3></a>
+<h3><a class="header" href="#recover-a-wallet-from-mnemonic" id="recover-a-wallet-from-mnemonic">Recover a wallet from mnemonic</a></h3>
 <p>(TODO)</p>
 <pre><code>zface wallet recover
 </code></pre>
 <p>You will then be prompted to enter a mnemonic to recover your wallet.</p>
-<a class="header" href="#get-balances" id="get-balances"><h3>Get balances</h3></a>
+<h3><a class="header" href="#get-balances" id="get-balances">Get balances</a></h3>
 <ul>
 <li>Getting your current balance from <code>encrypted-balances</code> module</li>
 </ul>
@@ -332,14 +354,47 @@ cargo build --release
 </ul>
 <pre><code>zface wallet asset-balance -i &lt;ASSET_ID&gt;
 </code></pre>
-<a class="header" href="#setup-for-zk-proving" id="setup-for-zk-proving"><h3>Setup for zk-proving</h3></a>
+<ul>
+<li>Getting your curernt balance from <code>anonymous-balances</code> module</li>
+</ul>
+<pre><code>zface wallet anonymous-balance
+</code></pre>
+<h3><a class="header" href="#setup-for-zk-proving" id="setup-for-zk-proving">Setup for zk-proving</a></h3>
 <p>Generating a proving key and verifying key of zk-SNARKs.</p>
 <pre><code>zface snark setup
 </code></pre>
-<a class="header" href="#send" id="send"><h3>send</h3></a>
-<pre><code>zface tx transfer -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
+<h3><a class="header" href="#send" id="send">send</a></h3>
+<ul>
+<li>Submit a transaction to call <code>confidential_transfer</code> function in <code>encrypted-balances</code> module.</li>
+</ul>
+<pre><code>zface tx send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
-<a class="header" href="#manage-encrypted-assets" id="manage-encrypted-assets"><h3>Manage encrypted assets</h3></a>
+<ul>
+<li>Submit a transaction to call <code>issue</code> function in <code>encrypted-assets</code> module.</li>
+</ul>
+<pre><code>zface tx asset-issue -a &lt;AMOUNT&gt;
+</code></pre>
+<ul>
+<li>Submit a transaction to call <code>asset_transfer</code> function in <code>encrypted-assets</code> module.</li>
+</ul>
+<pre><code>zface tx asset-send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt; -i &lt;ASSET_ID&gt;
+</code></pre>
+<ul>
+<li>Submit a transaction to call <code>burn</code> function in <code>encrypted-assets</code> module.</li>
+</ul>
+<pre><code>zface tx asset-burn -i &lt;ASSET_ID&gt;
+</code></pre>
+<ul>
+<li>Submit a transaction to call <code>issue</code> function in <code>anonymous-balances</code> module.</li>
+</ul>
+<pre><code>zface tx anonymous-issue -a &lt;AMOUNT&gt;
+</code></pre>
+<ul>
+<li>Submit a transaction to call <code>anonymous_transfer</code> function in <code>anonymous-balances</code> module.</li>
+</ul>
+<pre><code>zface tx anonymous-send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
+</code></pre>
+<h3><a class="header" href="#manage-encrypted-assets" id="manage-encrypted-assets">Manage encrypted assets</a></h3>
 <ul>
 <li>Issue new encrypted assets</li>
 </ul>
@@ -355,84 +410,84 @@ cargo build --release
 </ul>
 <pre><code>zface tx asset-burn -i &lt;ASSET_ID&gt;
 </code></pre>
-<a class="header" href="#test-for-debugging" id="test-for-debugging"><h2>Test for debugging</h2></a>
-<a class="header" href="#print-key-components" id="print-key-components"><h3>Print key components</h3></a>
+<h2><a class="header" href="#test-for-debugging" id="test-for-debugging">Test for debugging</a></h2>
+<h3><a class="header" href="#print-key-components" id="print-key-components">Print key components</a></h3>
 <pre><code>zface debug key-init
 </code></pre>
-<a class="header" href="#send-tx-for-debuggin" id="send-tx-for-debuggin"><h3>Send tx for debuggin</h3></a>
+<h3><a class="header" href="#send-tx-for-debuggin" id="send-tx-for-debuggin">Send tx for debuggin</a></h3>
 <pre><code>zface debug send -s &lt;SENDER_SEED&gt; -t &lt;RECPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
-<a class="header" href="#print-transaction-components" id="print-transaction-components"><h3>Print transaction components</h3></a>
+<h3><a class="header" href="#print-transaction-components" id="print-transaction-components">Print transaction components</a></h3>
 <pre><code>zface debug print-tx
 </code></pre>
-<a class="header" href="#confidential-payment" id="confidential-payment"><h1>Confidential Payment</h1></a>
+<h1><a class="header" href="#confidential-payment" id="confidential-payment">Confidential Payment</a></h1>
 <p>The <a href="https://github.com/LayerXcom/zero-chain/tree/master/modules/encrypted-balances">encrypted-balances module</a> provides a confidential payment module.</p>
 <p>In this section, we will explain what is &quot;confidential payment&quot; and how it works.</p>
-<a class="header" href="#overview" id="overview"><h1>Overview</h1></a>
+<h1><a class="header" href="#overview" id="overview">Overview</a></h1>
 <div align="center">
 <img src="https://user-images.githubusercontent.com/20852667/59552781-fe57b180-8fc5-11e9-8e71-a02efef85622.png" width="800px">
 </div>
-<a class="header" href="#on-chain-operations" id="on-chain-operations"><h1>On-chain operations</h1></a>
+<h1><a class="header" href="#on-chain-operations" id="on-chain-operations">On-chain operations</a></h1>
 <p>In the basic confidential payment scheme in <a href="https://github.com/LayerXcom/zero-chain/blob/master/runtime/src/conf_transfer.rs">conf_transfer module</a>, there is one public dispatchable function <code>confidential_transfer</code>. It takes some parameters such as a zero-knowledege proof, some ciphertexts and addresses.
 In this function, mainly three internal functions are called. First one is <code>roll_over</code> function for pending transfers which is explained later. <code>roll_over</code> allows us to send transactions asynchronously and protect from front-running attacks. We rollover an account in an epoch when the first message from this account is received, soone message rolls over only one account. To achieve this, we define a separate (internal) method for rolling over, and the first thing every other method does is to call this method.</p>
 <p>Second one is <code>validate_proof</code> function for varifying zk proofs. (For more details: <a href="ch03-03-statement-in-circuit.html">Statements in circuit</a>) Last one is mutating storage to add encrypted coins to recipient's encrypted balance and subtract it from sender's encrypted balance.</p>
-<a class="header" href="#pending-transfer" id="pending-transfer"><h2>Pending transfer</h2></a>
+<h2><a class="header" href="#pending-transfer" id="pending-transfer">Pending transfer</a></h2>
 <p>Zerochain uses a pending transfer strategy to prevent from front-running attacks. This attack is that a malicious attacker can watch Alice's transaction and his transaction gets processed first, then Alice's transaction will be rejected because the proof will not be valid anymore. More precisely, Alice's encrypted balance is updated, so public input to <code>validate_proof</code> parameter is no longer correct.</p>
 <p>To solve this problems, we have <code>encrypted_balance</code> and <code>pending_transfer</code> mappings to store account's balances on-chain. <code>encrypted_balanace</code> is a actual balance mapping and <code>pending_transfer</code> is like a temporary storage in order to store incoming payments.</p>
 <p>Let's think a simple case that Alice sends encrypted 5 coins to Bob. The encrypted 5 coins will be stored Bob's <code>pending_transfer</code> at first, not affect Bob's <code>encrypted_balance</code>. In the next time when someone sends coins to Bob or Bob sends coins to someone, <code>rollover</code> function will be invoked and balances are transferred from <code>pending_transfer</code> map to <code>encrypted_balance</code> map.</p>
 <p>More details in Section 3.1: https://crypto.stanford.edu/~buenz/papers/zether.pdf</p>
-<a class="header" href="#subtracting-encrypted-fees" id="subtracting-encrypted-fees"><h2>Subtracting encrypted fees</h2></a>
+<h2><a class="header" href="#subtracting-encrypted-fees" id="subtracting-encrypted-fees">Subtracting encrypted fees</a></h2>
 <p>Fees are subtracted from sender's encrypted balance based on <code>transaction_base_fee</code> storage key in the <code>conf_transfer</code> module.
 <code>transaction_base_fee</code> is set to <code>1</code> by default in <a href="https://github.com/LayerXcom/zero-chain/blob/67655966f3dd067011ea4fd215f128784b53ffd0/src/chain_spec.rs#L136">chain_spec.rs</a>.</p>
-<a class="header" href="#statement-in-circuit" id="statement-in-circuit"><h1>Statement in circuit</h1></a>
+<h1><a class="header" href="#statement-in-circuit" id="statement-in-circuit">Statement in circuit</a></h1>
 <p>Circuit implementation can be found <a href="https://github.com/LayerXcom/zero-chain/blob/master/core/proofs/src/circuit/transfer.rs">here</a>.</p>
 <p>(TODO)</p>
-<a class="header" href="#technology" id="technology"><h1>Technology</h1></a>
+<h1><a class="header" href="#technology" id="technology">Technology</a></h1>
 <p>In this section, we will explain core technologies which is used in Zerochain.</p>
-<a class="header" href="#zk-snarks" id="zk-snarks"><h1>zk-SNARKs</h1></a>
+<h1><a class="header" href="#zk-snarks" id="zk-snarks">zk-SNARKs</a></h1>
 <p>(TODO)</p>
-<a class="header" href="#encryption-scheme" id="encryption-scheme"><h1>Encryption scheme</h1></a>
+<h1><a class="header" href="#encryption-scheme" id="encryption-scheme">Encryption scheme</a></h1>
 <p>All transferred amounts and account balances are encrypted in Zerochain, but you have to compute(add or sub) these with encrypted at the time of the payment.</p>
 <p>Zerochain achieves it by using the special encryption algorithm called “Additive homomorphic encryption”. As you can guess from the name, it can compute the addition(or subtraction) with encrypted. More specifically, Zerochain uses “Lifted-ElGamal encryption” to get efficient encryption and additive homomorphic property. (You can think it’s like Pedersen commitment in terms of additive homomorphic property, but Lifted-Elgamal is an asymmetric key encryption algorithm, not a commitment.)</p>
-<a class="header" href="#encryption" id="encryption"><h2>Encryption</h2></a>
+<h2><a class="header" href="#encryption" id="encryption">Encryption</a></h2>
 <p>You can compute the ciphertext like bellow.</p>
 <p>ciphertext:</p>
 <div align="left">
 <img src="https://user-images.githubusercontent.com/20852667/59552793-3e1e9900-8fc6-11e9-9227-2eaba1eaf862.png" width="150px">
 </div>
 <p>where v: transferred amount, r: pseudorandomness, G: generator point, s: secret key (the corresponding public key: sG)</p>
-<a class="header" href="#decryption" id="decryption"><h2>Decryption</h2></a>
+<h2><a class="header" href="#decryption" id="decryption">Decryption</a></h2>
 <p>You can decrypt it by using the given ciphertext and secret key.</p>
 <div align="left">
 <img src="https://user-images.githubusercontent.com/20852667/59552795-437be380-8fc6-11e9-9e3c-0f26d1556443.png" width="250px">
 </div>
 <p>Then, you realize you have to solve the discrete logarithm problem to get the amount “v”. Practically, “v” would be just a small bits integer (like 32bits) and vG(v=1,2,…) are computed in advance. (On the other hand, the secret key “s” and pseudorandom “r” will be a huge number so that one cannot solve the discrete logarithm.)</p>
 <p>The decryption of Lifted-ElGamal is not efficient like this, but we chose it as an encryption algorithm in Zerochain due to the efficient encryption and the good compatibility with zero-knowledge proof.</p>
-<a class="header" href="#additive-homomorphic" id="additive-homomorphic"><h2>Additive homomorphic</h2></a>
+<h2><a class="header" href="#additive-homomorphic" id="additive-homomorphic">Additive homomorphic</a></h2>
 <p>Let’s think the case the user has encrypted 10 coins as his balance, then is transferred encrypted 5 coins. That is the addition of ciphertext with v = 10 as balance and v’ = 5 as amount.</p>
 <div align="left">
 <img src="https://user-images.githubusercontent.com/20852667/59552799-4971c480-8fc6-11e9-9f44-0647b47102cb.png" width="600px">
 </div>
 <p>This is the same form as the ciphertext you see above. You can get the amount “15” by using secret key “s” in the same way. All the additions of ciphertext are computed on-chain at the time of updating the balance.</p>
-<a class="header" href="#key-components" id="key-components"><h1>Key components</h1></a>
+<h1><a class="header" href="#key-components" id="key-components">Key components</a></h1>
 <div align="center">
 <img src="https://user-images.githubusercontent.com/20852667/59552701-57731580-8fc5-11e9-8bee-ccf12e0cb051.png" width="600px">
 </div>
 <p>These arrows are one-way. For example, you cannot derive a spending key from a decryption key, but you can derive a decryption key from a spending key.</p>
 <p>These bunch of keypairs allow us to get a auditability, zk-proofs delegation and hide a signer's identity.</p>
 <p>This key components scheme is modified and simplified version of zcash sapling's one to be compatible with Zerochain.</p>
-<a class="header" href="#signing-key" id="signing-key"><h3>Signing key</h3></a>
+<h3><a class="header" href="#signing-key" id="signing-key">Signing key</a></h3>
 <p>Every time you sign a transaction, a re-randomized signing key will be generated so that a signature will be different from the previous one. It helps to make it quite difficult to distinguish the sender's address because the signature of the same sender is no longer same.</p>
-<a class="header" href="#decryption-key" id="decryption-key"><h3>Decryption key</h3></a>
+<h3><a class="header" href="#decryption-key" id="decryption-key">Decryption key</a></h3>
 <p>A decryption key works as a viewing key which allows only this key's owener to see the encrypted balance which is  stored on-chain.</p>
 <p>If you pass your decryption key to auditors, they can see your current balance, but cannot spend your coins of course.</p>
-<a class="header" href="#encryption-key" id="encryption-key"><h3>Encryption key</h3></a>
+<h3><a class="header" href="#encryption-key" id="encryption-key">Encryption key</a></h3>
 <p>Encryption key is a public key can be used to encrypt all transferred amounts and balances.</p>
-<a class="header" href="#hierarchical-deterministic-keys" id="hierarchical-deterministic-keys"><h1>Hierarchical Deterministic Keys</h1></a>
-<a class="header" href="#open-problems" id="open-problems"><h1>Open problems</h1></a>
-<a class="header" href="#trusted-setup" id="trusted-setup"><h3>Trusted setup</h3></a>
-<a class="header" href="#linearly-scaling-computational-cost-in-terms-of-anonimity-set" id="linearly-scaling-computational-cost-in-terms-of-anonimity-set"><h3>Linearly scaling computational cost in terms of anonimity set</h3></a>
-<a class="header" href="#limited-functionalities-for-privacy-protecting-operations" id="limited-functionalities-for-privacy-protecting-operations"><h3>Limited functionalities for privacy-protecting operations</h3></a>
+<h1><a class="header" href="#hierarchical-deterministic-keys" id="hierarchical-deterministic-keys">Hierarchical Deterministic Keys</a></h1>
+<h1><a class="header" href="#open-problems" id="open-problems">Open problems</a></h1>
+<h3><a class="header" href="#trusted-setup" id="trusted-setup">Trusted setup</a></h3>
+<h3><a class="header" href="#linearly-scaling-computational-cost-in-terms-of-anonimity-set" id="linearly-scaling-computational-cost-in-terms-of-anonimity-set">Linearly scaling computational cost in terms of anonimity set</a></h3>
+<h3><a class="header" href="#limited-functionalities-for-privacy-protecting-operations" id="limited-functionalities-for-privacy-protecting-operations">Limited functionalities for privacy-protecting operations</a></h3>
 
                     </main>
 

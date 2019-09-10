@@ -66,6 +66,11 @@ zface wallet balance
 zface wallet asset-balance -i <ASSET_ID>
 ```
 
+- Getting your curernt balance from `anonymous-balances` module
+```
+zface wallet anonymous-balance
+```
+
 ### Setup for zk-proving
 Generating a proving key and verifying key of zk-SNARKs.
 ```
@@ -73,9 +78,34 @@ zface snark setup
 ```
 
 ### send
-
+- Submit a transaction to call `confidential_transfer` function in `encrypted-balances` module.
 ```
-zface tx transfer -t <RECIPIENT_ADDRESS> -a <AMOUNT>
+zface tx send -t <RECIPIENT_ADDRESS> -a <AMOUNT>
+```
+
+- Submit a transaction to call `issue` function in `encrypted-assets` module.
+```
+zface tx asset-issue -a <AMOUNT>
+```
+
+- Submit a transaction to call `asset_transfer` function in `encrypted-assets` module.
+```
+zface tx asset-send -t <RECIPIENT_ADDRESS> -a <AMOUNT> -i <ASSET_ID>
+```
+
+- Submit a transaction to call `burn` function in `encrypted-assets` module.
+```
+zface tx asset-burn -i <ASSET_ID>
+```
+
+- Submit a transaction to call `issue` function in `anonymous-balances` module.
+```
+zface tx anonymous-issue -a <AMOUNT>
+```
+
+- Submit a transaction to call `anonymous_transfer` function in `anonymous-balances` module.
+```
+zface tx anonymous-send -t <RECIPIENT_ADDRESS> -a <AMOUNT>
 ```
 
 ### Manage encrypted assets

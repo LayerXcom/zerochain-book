@@ -4,6 +4,8 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Encryption scheme - Zerochain Book</title>
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,7 +58,7 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             document.body.className = theme;
             document.querySelector('html').className = theme + ' js';
@@ -75,7 +77,10 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial-confidential-payment.html"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payment</a></li><li><a href="ch01-03-tutorial-encrypted-assets.html"><strong aria-hidden="true">1.3.</strong> Turotial: Encrypted fungible assets</a></li></ol></li><li><a href="ch02-00-zface.html"><strong aria-hidden="true">2.</strong> ZFace</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statements in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html" class="active"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial-confidential-payment.html"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payments</a></li><li><a href="ch01-03-tutorial-encrypted-assets.html"><strong aria-hidden="true">1.3.</strong> Turotial: Encrypted fungible assets</a></li><li><a href="ch01-04-tutorial-anonymous-payment.html"><strong aria-hidden="true">1.4.</strong> Tutorial: Anonymous payments</a></li></ol></li><li><a href="ch02-00-zface.html"><strong aria-hidden="true">2.</strong> ZFace</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statements in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html" class="active"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -105,7 +110,7 @@
                             
                         </div>
 
-                        <h1 class="menu-title">Zerochain Book</h1> 
+                        <h1 class="menu-title">Zerochain Book</h1>
 
                         <div class="right-buttons">
                             <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -140,24 +145,24 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#encryption-scheme" id="encryption-scheme"><h1>Encryption scheme</h1></a>
+                        <h1><a class="header" href="#encryption-scheme" id="encryption-scheme">Encryption scheme</a></h1>
 <p>All transferred amounts and account balances are encrypted in Zerochain, but you have to compute(add or sub) these with encrypted at the time of the payment.</p>
 <p>Zerochain achieves it by using the special encryption algorithm called “Additive homomorphic encryption”. As you can guess from the name, it can compute the addition(or subtraction) with encrypted. More specifically, Zerochain uses “Lifted-ElGamal encryption” to get efficient encryption and additive homomorphic property. (You can think it’s like Pedersen commitment in terms of additive homomorphic property, but Lifted-Elgamal is an asymmetric key encryption algorithm, not a commitment.)</p>
-<a class="header" href="#encryption" id="encryption"><h2>Encryption</h2></a>
+<h2><a class="header" href="#encryption" id="encryption">Encryption</a></h2>
 <p>You can compute the ciphertext like bellow.</p>
 <p>ciphertext:</p>
 <div align="left">
 <img src="https://user-images.githubusercontent.com/20852667/59552793-3e1e9900-8fc6-11e9-9227-2eaba1eaf862.png" width="150px">
 </div>
 <p>where v: transferred amount, r: pseudorandomness, G: generator point, s: secret key (the corresponding public key: sG)</p>
-<a class="header" href="#decryption" id="decryption"><h2>Decryption</h2></a>
+<h2><a class="header" href="#decryption" id="decryption">Decryption</a></h2>
 <p>You can decrypt it by using the given ciphertext and secret key.</p>
 <div align="left">
 <img src="https://user-images.githubusercontent.com/20852667/59552795-437be380-8fc6-11e9-9e3c-0f26d1556443.png" width="250px">
 </div>
 <p>Then, you realize you have to solve the discrete logarithm problem to get the amount “v”. Practically, “v” would be just a small bits integer (like 32bits) and vG(v=1,2,…) are computed in advance. (On the other hand, the secret key “s” and pseudorandom “r” will be a huge number so that one cannot solve the discrete logarithm.)</p>
 <p>The decryption of Lifted-ElGamal is not efficient like this, but we chose it as an encryption algorithm in Zerochain due to the efficient encryption and the good compatibility with zero-knowledge proof.</p>
-<a class="header" href="#additive-homomorphic" id="additive-homomorphic"><h2>Additive homomorphic</h2></a>
+<h2><a class="header" href="#additive-homomorphic" id="additive-homomorphic">Additive homomorphic</a></h2>
 <p>Let’s think the case the user has encrypted 10 coins as his balance, then is transferred encrypted 5 coins. That is the addition of ciphertext with v = 10 as balance and v’ = 5 as amount.</p>
 <div align="left">
 <img src="https://user-images.githubusercontent.com/20852667/59552799-4971c480-8fc6-11e9-9f44-0647b47102cb.png" width="600px">

@@ -84,6 +84,6 @@ zface wallet change-account -n <ACCOUNT_NAME>
 
 - Transfer encrypted coins to your new account
 ```
-zface tx transfer -t <ADDRESS> -a <AMOUNT>
+zface tx send -t <ADDRESS> -a <AMOUNT>
 ```
 It's Done!

@@ -4,6 +4,8 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Open problems - Zerochain Book</title>
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,7 +58,7 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             document.body.className = theme;
             document.querySelector('html').className = theme + ' js';
@@ -75,7 +77,10 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial-confidential-payment.html"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payment</a></li><li><a href="ch01-03-tutorial-encrypted-assets.html"><strong aria-hidden="true">1.3.</strong> Turotial: Encrypted fungible assets</a></li></ol></li><li><a href="ch02-00-zface.html"><strong aria-hidden="true">2.</strong> ZFace</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statements in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html" class="active"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial-confidential-payment.html"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payments</a></li><li><a href="ch01-03-tutorial-encrypted-assets.html"><strong aria-hidden="true">1.3.</strong> Turotial: Encrypted fungible assets</a></li><li><a href="ch01-04-tutorial-anonymous-payment.html"><strong aria-hidden="true">1.4.</strong> Tutorial: Anonymous payments</a></li></ol></li><li><a href="ch02-00-zface.html"><strong aria-hidden="true">2.</strong> ZFace</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statements in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html" class="active"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -105,7 +110,7 @@
                             
                         </div>
 
-                        <h1 class="menu-title">Zerochain Book</h1> 
+                        <h1 class="menu-title">Zerochain Book</h1>
 
                         <div class="right-buttons">
                             <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -140,10 +145,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#open-problems" id="open-problems"><h1>Open problems</h1></a>
-<a class="header" href="#trusted-setup" id="trusted-setup"><h3>Trusted setup</h3></a>
-<a class="header" href="#linearly-scaling-computational-cost-in-terms-of-anonimity-set" id="linearly-scaling-computational-cost-in-terms-of-anonimity-set"><h3>Linearly scaling computational cost in terms of anonimity set</h3></a>
-<a class="header" href="#limited-functionalities-for-privacy-protecting-operations" id="limited-functionalities-for-privacy-protecting-operations"><h3>Limited functionalities for privacy-protecting operations</h3></a>
+                        <h1><a class="header" href="#open-problems" id="open-problems">Open problems</a></h1>
+<h3><a class="header" href="#trusted-setup" id="trusted-setup">Trusted setup</a></h3>
+<h3><a class="header" href="#linearly-scaling-computational-cost-in-terms-of-anonimity-set" id="linearly-scaling-computational-cost-in-terms-of-anonimity-set">Linearly scaling computational cost in terms of anonimity set</a></h3>
+<h3><a class="header" href="#limited-functionalities-for-privacy-protecting-operations" id="limited-functionalities-for-privacy-protecting-operations">Limited functionalities for privacy-protecting operations</a></h3>
 
                     </main>
 

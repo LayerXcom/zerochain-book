@@ -4,6 +4,8 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>ZFace - Zerochain Book</title>
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,7 +58,7 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             document.body.className = theme;
             document.querySelector('html').className = theme + ' js';
@@ -75,7 +77,10 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial-confidential-payment.html"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payment</a></li><li><a href="ch01-03-tutorial-encrypted-assets.html"><strong aria-hidden="true">1.3.</strong> Turotial: Encrypted fungible assets</a></li></ol></li><li><a href="ch02-00-zface.html" class="active"><strong aria-hidden="true">2.</strong> ZFace</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statements in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="affix"><a href="ch00-00-introduction.html">Introduction</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><a href="ch01-02-tutorial-confidential-payment.html"><strong aria-hidden="true">1.2.</strong> Turotial: Confidential payments</a></li><li><a href="ch01-03-tutorial-encrypted-assets.html"><strong aria-hidden="true">1.3.</strong> Turotial: Encrypted fungible assets</a></li><li><a href="ch01-04-tutorial-anonymous-payment.html"><strong aria-hidden="true">1.4.</strong> Tutorial: Anonymous payments</a></li></ol></li><li><a href="ch02-00-zface.html" class="active"><strong aria-hidden="true">2.</strong> ZFace</a></li><li><a href="ch03-00-confidential-payment.html"><strong aria-hidden="true">3.</strong> Confidential Payment</a></li><li><ol class="section"><li><a href="ch03-01-overview.html"><strong aria-hidden="true">3.1.</strong> Overview</a></li><li><a href="ch03-02-onchain-operations.html"><strong aria-hidden="true">3.2.</strong> On-chain operations</a></li><li><a href="ch03-03-statement-in-circuit.html"><strong aria-hidden="true">3.3.</strong> Statements in circuit</a></li></ol></li><li><a href="ch04-00-technology.html"><strong aria-hidden="true">4.</strong> Technology</a></li><li><ol class="section"><li><a href="ch04-01-zk-snarks.html"><strong aria-hidden="true">4.1.</strong> zk-SNARKs</a></li><li><a href="ch04-02-encryption.html"><strong aria-hidden="true">4.2.</strong> Encryption scheme</a></li><li><a href="ch04-03-key-components.html"><strong aria-hidden="true">4.3.</strong> Key components</a></li><li><a href="ch04-04-hierarchical-deterministic.html"><strong aria-hidden="true">4.4.</strong> Hierarchical Deterministic Wallets</a></li><li><a href="ch04-05-open-problems.html"><strong aria-hidden="true">4.5.</strong> Open problems</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -105,7 +110,7 @@
                             
                         </div>
 
-                        <h1 class="menu-title">Zerochain Book</h1> 
+                        <h1 class="menu-title">Zerochain Book</h1>
 
                         <div class="right-buttons">
                             <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -140,7 +145,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#zface-an-interface-for-interacting-with-zerochain" id="zface-an-interface-for-interacting-with-zerochain"><h1>ZFace: An interface for interacting with Zerochain</h1></a>
+                        <h1><a class="header" href="#zface-an-interface-for-interacting-with-zerochain" id="zface-an-interface-for-interacting-with-zerochain">ZFace: An interface for interacting with Zerochain</a></h1>
 <p>(WIP)</p>
 <p>ZFace is a low-level wallet core and cryptographic tools for Zerochain.</p>
 <p>In this section, we explained the usage of CLI tools powered by ZFace. The CLI tool has mainly four subcommands which is explained later.</p>
@@ -150,34 +155,34 @@
 <li>tx: Operatipons around sending transactions to Zerochain</li>
 <li>debug: Debugging and testing commands</li>
 </ul>
-<a class="header" href="#creating-a-new-wallet" id="creating-a-new-wallet"><h3>Creating a new wallet</h3></a>
+<h3><a class="header" href="#creating-a-new-wallet" id="creating-a-new-wallet">Creating a new wallet</a></h3>
 <p>For security reasons, the cryptographic materials are stored encryped by providing a password.</p>
 <p>To do this, run:</p>
 <pre><code>zface wallet init
 </code></pre>
 <p>You will then be prompted to enter a password. This password will be used to encrypt your mnemonics of your wallet. Wallet files are stored in zface directory located in the following path.</p>
-<table><thead><tr><th>Platform </th><th> Value </th><th> Example </th></tr></thead><tbody>
-<tr><td> Linux </td><td> $XDG_DATA_HOME or $HOME/.local/share/zface </td><td> /home/alice/.local/share/zface </td></tr>
-<tr><td> macOS </td><td> $HOME/Library/Application Support/zface </td><td> /Users/Alice/Library/Application Support/zface </td></tr>
-<tr><td> Windows </td><td> {FOLDERID_LocalAppData}\zface </td><td> C:\Users\Alice\AppData\Local\zface </td></tr>
-</tbody></table>
-<a class="header" href="#add-a-account" id="add-a-account"><h3>Add a account</h3></a>
+<p>|Platform | Value | Example |
+----|----
+| Linux | $XDG_DATA_HOME or $HOME/.local/share/zface | /home/alice/.local/share/zface |
+| macOS | $HOME/Library/Application Support/zface | /Users/Alice/Library/Application Support/zface |
+| Windows | {FOLDERID_LocalAppData}\zface | C:\Users\Alice\AppData\Local\zface |</p>
+<h3><a class="header" href="#add-a-account" id="add-a-account">Add a account</a></h3>
 <p>You can add a new account into your wallet.</p>
 <pre><code>zface wallet add-account
 </code></pre>
-<a class="header" href="#show-accounts-list" id="show-accounts-list"><h3>Show accounts list</h3></a>
+<h3><a class="header" href="#show-accounts-list" id="show-accounts-list">Show accounts list</a></h3>
 <p>It will show your accounts in your wallet.</p>
 <pre><code>zface wallet list
 </code></pre>
-<a class="header" href="#change-default-account" id="change-default-account"><h3>Change default account</h3></a>
+<h3><a class="header" href="#change-default-account" id="change-default-account">Change default account</a></h3>
 <pre><code>zface wallet change-account -n &lt;ACCOUNT_NAME&gt;
 </code></pre>
-<a class="header" href="#recover-a-wallet-from-mnemonic" id="recover-a-wallet-from-mnemonic"><h3>Recover a wallet from mnemonic</h3></a>
+<h3><a class="header" href="#recover-a-wallet-from-mnemonic" id="recover-a-wallet-from-mnemonic">Recover a wallet from mnemonic</a></h3>
 <p>(TODO)</p>
 <pre><code>zface wallet recover
 </code></pre>
 <p>You will then be prompted to enter a mnemonic to recover your wallet.</p>
-<a class="header" href="#get-balances" id="get-balances"><h3>Get balances</h3></a>
+<h3><a class="header" href="#get-balances" id="get-balances">Get balances</a></h3>
 <ul>
 <li>Getting your current balance from <code>encrypted-balances</code> module</li>
 </ul>
@@ -188,14 +193,47 @@
 </ul>
 <pre><code>zface wallet asset-balance -i &lt;ASSET_ID&gt;
 </code></pre>
-<a class="header" href="#setup-for-zk-proving" id="setup-for-zk-proving"><h3>Setup for zk-proving</h3></a>
+<ul>
+<li>Getting your curernt balance from <code>anonymous-balances</code> module</li>
+</ul>
+<pre><code>zface wallet anonymous-balance
+</code></pre>
+<h3><a class="header" href="#setup-for-zk-proving" id="setup-for-zk-proving">Setup for zk-proving</a></h3>
 <p>Generating a proving key and verifying key of zk-SNARKs.</p>
 <pre><code>zface snark setup
 </code></pre>
-<a class="header" href="#send" id="send"><h3>send</h3></a>
-<pre><code>zface tx transfer -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
+<h3><a class="header" href="#send" id="send">send</a></h3>
+<ul>
+<li>Submit a transaction to call <code>confidential_transfer</code> function in <code>encrypted-balances</code> module.</li>
+</ul>
+<pre><code>zface tx send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
-<a class="header" href="#manage-encrypted-assets" id="manage-encrypted-assets"><h3>Manage encrypted assets</h3></a>
+<ul>
+<li>Submit a transaction to call <code>issue</code> function in <code>encrypted-assets</code> module.</li>
+</ul>
+<pre><code>zface tx asset-issue -a &lt;AMOUNT&gt;
+</code></pre>
+<ul>
+<li>Submit a transaction to call <code>asset_transfer</code> function in <code>encrypted-assets</code> module.</li>
+</ul>
+<pre><code>zface tx asset-send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt; -i &lt;ASSET_ID&gt;
+</code></pre>
+<ul>
+<li>Submit a transaction to call <code>burn</code> function in <code>encrypted-assets</code> module.</li>
+</ul>
+<pre><code>zface tx asset-burn -i &lt;ASSET_ID&gt;
+</code></pre>
+<ul>
+<li>Submit a transaction to call <code>issue</code> function in <code>anonymous-balances</code> module.</li>
+</ul>
+<pre><code>zface tx anonymous-issue -a &lt;AMOUNT&gt;
+</code></pre>
+<ul>
+<li>Submit a transaction to call <code>anonymous_transfer</code> function in <code>anonymous-balances</code> module.</li>
+</ul>
+<pre><code>zface tx anonymous-send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
+</code></pre>
+<h3><a class="header" href="#manage-encrypted-assets" id="manage-encrypted-assets">Manage encrypted assets</a></h3>
 <ul>
 <li>Issue new encrypted assets</li>
 </ul>
@@ -211,14 +249,14 @@
 </ul>
 <pre><code>zface tx asset-burn -i &lt;ASSET_ID&gt;
 </code></pre>
-<a class="header" href="#test-for-debugging" id="test-for-debugging"><h2>Test for debugging</h2></a>
-<a class="header" href="#print-key-components" id="print-key-components"><h3>Print key components</h3></a>
+<h2><a class="header" href="#test-for-debugging" id="test-for-debugging">Test for debugging</a></h2>
+<h3><a class="header" href="#print-key-components" id="print-key-components">Print key components</a></h3>
 <pre><code>zface debug key-init
 </code></pre>
-<a class="header" href="#send-tx-for-debuggin" id="send-tx-for-debuggin"><h3>Send tx for debuggin</h3></a>
+<h3><a class="header" href="#send-tx-for-debuggin" id="send-tx-for-debuggin">Send tx for debuggin</a></h3>
 <pre><code>zface debug send -s &lt;SENDER_SEED&gt; -t &lt;RECPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
-<a class="header" href="#print-transaction-components" id="print-transaction-components"><h3>Print transaction components</h3></a>
+<h3><a class="header" href="#print-transaction-components" id="print-transaction-components">Print transaction components</a></h3>
 <pre><code>zface debug print-tx
 </code></pre>
 
@@ -227,7 +265,7 @@
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="ch01-03-tutorial-encrypted-assets.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="ch01-04-tutorial-anonymous-payment.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
@@ -245,7 +283,7 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="ch01-03-tutorial-encrypted-assets.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="ch01-04-tutorial-anonymous-payment.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 

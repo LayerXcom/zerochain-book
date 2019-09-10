@@ -17,7 +17,7 @@ zface tx asset-issue -a 100
 Let's transfer 20 encrypted-coins to the address `5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i`(This address is depending on your wallet account). The asset-id of initial minted assets is `0`, so you need to specify it.
 
 ```
-zface tx asset-transfer -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
+zface tx asset-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
 ```
 
 ### 3. Check your current balance of encrypted assets
