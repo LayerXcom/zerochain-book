@@ -15,7 +15,7 @@ For security reasons, the cryptographic materials are stored encryped by providi
 To do this, run:
 
 ```
-zface wallet init
+./target/release/zface wallet init
 ```
 
 You will then be prompted to enter a password. This password will be used to encrypt your mnemonics of your wallet. Wallet files are stored in zface directory located in the following path.
@@ -31,26 +31,26 @@ You will then be prompted to enter a password. This password will be used to enc
 You can add a new account into your wallet.
 
 ```
-zface wallet add-account
+./target/release/zface wallet add-account
 ```
 
 ### Show accounts list
 It will show your accounts in your wallet.
 
 ```
-zface wallet list
+./target/release/zface wallet list
 ```
 
 ### Change default account
 
 ```
-zface wallet change-account -n <ACCOUNT_NAME>
+./target/release/zface wallet change-account -n <ACCOUNT_NAME>
 ```
 
 ### Recover a wallet from mnemonic
 (TODO)
 ```
-zface wallet recover
+./target/release/zface wallet recover
 ```
 
 You will then be prompted to enter a mnemonic to recover your wallet.
@@ -58,85 +58,85 @@ You will then be prompted to enter a mnemonic to recover your wallet.
 ### Get balances
 - Getting your current balance from `encrypted-balances` module
 ```
-zface wallet balance
+./target/release/zface wallet balance
 ```
 
 - Getting your curernt balance from `encrypted-balances` module
 ```
-zface wallet asset-balance -i <ASSET_ID>
+./target/release/zface wallet asset-balance -i <ASSET_ID>
 ```
 
 - Getting your curernt balance from `anonymous-balances` module
 ```
-zface wallet anonymous-balance
+./target/release/zface wallet anonymous-balance
 ```
 
 ### Setup for zk-proving
 Generating a proving key and verifying key of zk-SNARKs.
 ```
-zface snark setup
+./target/release/zface snark setup
 ```
 
 ### send
 - Submit a transaction to call `confidential_transfer` function in `encrypted-balances` module.
 ```
-zface tx send -t <RECIPIENT_ADDRESS> -a <AMOUNT>
+./target/release/zface tx send -t <RECIPIENT_ADDRESS> -a <AMOUNT>
 ```
 
 - Submit a transaction to call `issue` function in `encrypted-assets` module.
 ```
-zface tx asset-issue -a <AMOUNT>
+./target/release/zface tx asset-issue -a <AMOUNT>
 ```
 
 - Submit a transaction to call `asset_transfer` function in `encrypted-assets` module.
 ```
-zface tx asset-send -t <RECIPIENT_ADDRESS> -a <AMOUNT> -i <ASSET_ID>
+./target/release/zface tx asset-send -t <RECIPIENT_ADDRESS> -a <AMOUNT> -i <ASSET_ID>
 ```
 
 - Submit a transaction to call `burn` function in `encrypted-assets` module.
 ```
-zface tx asset-burn -i <ASSET_ID>
+./target/release/zface tx asset-burn -i <ASSET_ID>
 ```
 
 - Submit a transaction to call `issue` function in `anonymous-balances` module.
 ```
-zface tx anonymous-issue -a <AMOUNT>
+./target/release/zface tx anonymous-issue -a <AMOUNT>
 ```
 
 - Submit a transaction to call `anonymous_transfer` function in `anonymous-balances` module.
 ```
-zface tx anonymous-send -t <RECIPIENT_ADDRESS> -a <AMOUNT>
+./target/release/zface tx anonymous-send -t <RECIPIENT_ADDRESS> -a <AMOUNT>
 ```
 
 ### Manage encrypted assets
 - Issue new encrypted assets
 ```
-zface tx asset-issue -a <AMOUNT>
+./target/release/zface tx asset-issue -a <AMOUNT>
 ```
 
 - Send encrypted assets
 ```
-zface tx asset-transfer -t <RECIPIENT_ADDRESS> -a <AMOUNT> -i <ASSET_ID>
+./target/release/zface tx asset-transfer -t <RECIPIENT_ADDRESS> -a <AMOUNT> -i <ASSET_ID>
 ```
 
 - Burn encrypted assets
 ```
-zface tx asset-burn -i <ASSET_ID>
+./target/release/zface tx asset-burn -i <ASSET_ID>
 ```
 
 ## Test for debugging
 
 ### Print key components
 ```
-zface debug key-init
+./target/release/zface debug key-init
 ```
 
 ### Send tx for debuggin
 ```
-zface debug send -s <SENDER_SEED> -t <RECPIENT_ADDRESS> -a <AMOUNT>
+./target/release/zface debug send -s <SENDER_SEED> -t <RECPIENT_ADDRESS> -a <AMOUNT>
 ```
 
 ### Print transaction components
 ```
-zface debug print-tx
+./target/release/zface debug print-tx
 ```

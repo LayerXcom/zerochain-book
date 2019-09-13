@@ -8,14 +8,14 @@ For following the tutorial, we expect you to already install ZFace, create your 
 You can mint your encrypted coins by the following commands. This issue method isn't anonymous way but confidential way.
 
 ```
-zface tx anonymous-issue -a 100
+./target/release/zface tx anonymous-issue -a 100
 ```
 
 ### 2. Send an anonymous transaction
 Let's transfer 20 encrypted-coins to the address `5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i`(This address is depending on your wallet account). Some dummy addresses are automatically added to the transaction so that other people cannot see where it came from and went to.
 
 ```
-zface tx anonymous-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
+./target/release/zface tx anonymous-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
 ```
 
 ### 3. Check your current balance
@@ -23,5 +23,5 @@ zface tx anonymous-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4n
 You just transferred 20 assets to other address, so you're supposed to have 80 assets.
 
 ```
-zface wallet anonymous-balance
+./target/release/zface wallet anonymous-balance
 ```

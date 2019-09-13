@@ -8,7 +8,7 @@ In this tutorial, we assumed you've already done the all installation explained 
 First of all, you need to install [ZFace](ch02-00-zface.md) to interact with Zerochain. ZFace is basically a low-level wallet core and cryptographic tools for Zerochain.
 
 ```
-cargo install --force --path zface
+cargo build --release -p zface
 ```
 
 Then, you can use CLI powerd by ZFace.
@@ -17,7 +17,7 @@ Then, you can use CLI powerd by ZFace.
 Create a new zerochain wallet.
 
 ```
-zface wallet init
+./target/release/zface wallet init
 ```
 
 You will then be prompted to enter a wallet password and a initial account name.
@@ -45,13 +45,13 @@ If you want to clear your old chain's history:
 When you initialize your Zerochain, a specific Alice account has initial minted 10,000 coins (of course, it is encrypted). You can transfer the encrypted coins from Alice to your just generated account by `debug` command.
 
 ```
-zface debug send -t <YOUR ADDRESS> -a <AMOUNT>
+./target/release/zface debug send -t <YOUR ADDRESS> -a <AMOUNT>
 ```
 
 For example, the following command can transfer 100 coins to `5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i` address. The address is depending on your account. Please copy and pasted printed-out address.
 
 ```
-zface debug send -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i -a 100
+./target/release/zface debug send -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i -a 100
 ```
 
 
@@ -59,7 +59,7 @@ zface debug send -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i -a 100
 If the transferring coins was done successfully, your account should have 100 coins. You can check the balance by
 
 ```
-zface wallet balance
+./target/release/zface wallet balance
 ```
 
 You will then be prompted to enter your passoword.
@@ -69,21 +69,21 @@ You also can transfer encypted coins to your other your account by the following
 
 - Create other your account
 ```
-zface wallet add-account
+./target/release/zface wallet add-account
 ```
 
 - Check your accounts list
 ```
-zface wallet list
+./target/release/zface wallet list
 ```
 
 - Change default account to your first account who has 100 coins
 ```
-zface wallet change-account -n <ACCOUNT_NAME>
+./target/release/zface wallet change-account -n <ACCOUNT_NAME>
 ```
 
 - Transfer encrypted coins to your new account
 ```
-zface tx send -t <ADDRESS> -a <AMOUNT>
+./target/release/zface tx send -t <ADDRESS> -a <AMOUNT>
 ```
 It's Done!

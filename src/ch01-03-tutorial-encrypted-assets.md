@@ -9,7 +9,7 @@ We expect you to install ZFace, create your wallet, and run Zerochain following 
 You can mint your encrypted assets by the following commands. The amount is specified `100` and the asset-id is automatically determined as a unique number. You can fetch the asset-id by the event.
 
 ```
-zface tx asset-issue -a 100
+./target/release/zface tx asset-issue -a 100
 ```
 
 ### 2. Transfer encrypted asset
@@ -17,7 +17,7 @@ zface tx asset-issue -a 100
 Let's transfer 20 encrypted-coins to the address `5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i`(This address is depending on your wallet account). The asset-id of initial minted assets is `0`, so you need to specify it.
 
 ```
-zface tx asset-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
+./target/release/zface tx asset-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
 ```
 
 ### 3. Check your current balance of encrypted assets
@@ -25,7 +25,7 @@ zface tx asset-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao
 You just transferred 20 assets to other address and are subtracted 1 assets as fee, so you're supposed to have 79 assets.
 
 ```
-zface wallet asset-balance -i 0
+./target/release/zface wallet asset-balance -i 0
 ```
 
 ### 4. Burn encrypted asset
@@ -33,5 +33,5 @@ zface wallet asset-balance -i 0
 To burn your encrypted assets, just specify the asset-id and then destroy the assets.
 
 ```
-zface tx asset-burn -i 0
+./target/release/zface tx asset-burn -i 0
 ```
