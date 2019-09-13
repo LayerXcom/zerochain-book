@@ -150,15 +150,15 @@
 <p>For following the tutorial, we expect you to already install ZFace, create your wallet, and run Zerochain, see <a href="ch01-02-tutorial-confidential-payment.html">the section1~3 in this page</a>.</p>
 <h3><a class="header" href="#1-mint-100-encrypted-coins" id="1-mint-100-encrypted-coins">1. Mint 100 encrypted coins</a></h3>
 <p>You can mint your encrypted coins by the following commands. This issue method isn't anonymous way but confidential way.</p>
-<pre><code>zface tx anonymous-issue -a 100
+<pre><code>./target/release/zface tx anonymous-issue -a 100
 </code></pre>
 <h3><a class="header" href="#2-send-an-anonymous-transaction" id="2-send-an-anonymous-transaction">2. Send an anonymous transaction</a></h3>
 <p>Let's transfer 20 encrypted-coins to the address <code>5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i</code>(This address is depending on your wallet account). Some dummy addresses are automatically added to the transaction so that other people cannot see where it came from and went to.</p>
-<pre><code>zface tx anonymous-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
+<pre><code>./target/release/zface tx anonymous-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
 </code></pre>
 <h3><a class="header" href="#3-check-your-current-balance" id="3-check-your-current-balance">3. Check your current balance</a></h3>
 <p>You just transferred 20 assets to other address, so you're supposed to have 80 assets.</p>
-<pre><code>zface wallet anonymous-balance
+<pre><code>./target/release/zface wallet anonymous-balance
 </code></pre>
 
                     </main>

@@ -150,12 +150,12 @@
 <p>In this tutorial, we assumed you've already done the all installation explained <a href="ch01-01-installation.html">previous section</a>.</p>
 <h3><a class="header" href="#1-install-zface" id="1-install-zface">1. Install ZFace</a></h3>
 <p>First of all, you need to install <a href="ch02-00-zface.html">ZFace</a> to interact with Zerochain. ZFace is basically a low-level wallet core and cryptographic tools for Zerochain.</p>
-<pre><code>cargo install --force --path zface
+<pre><code>cargo build --release -p zface
 </code></pre>
 <p>Then, you can use CLI powerd by ZFace.</p>
 <h3><a class="header" href="#2-wallet-creation" id="2-wallet-creation">2. Wallet creation</a></h3>
 <p>Create a new zerochain wallet.</p>
-<pre><code>zface wallet init
+<pre><code>./target/release/zface wallet init
 </code></pre>
 <p>You will then be prompted to enter a wallet password and a initial account name.
 <strong>Please, note carefully the following mnemonic words. They will be needed to recover your wallet.</strong></p>
@@ -172,14 +172,14 @@
 <h3><a class="header" href="#4-interacting-with-zerochain" id="4-interacting-with-zerochain">4. Interacting with Zerochain</a></h3>
 <h5><a class="header" href="#4-1-transfer-initial-minted-coins-to-your-account" id="4-1-transfer-initial-minted-coins-to-your-account">4-1. Transfer initial minted coins to your account</a></h5>
 <p>When you initialize your Zerochain, a specific Alice account has initial minted 10,000 coins (of course, it is encrypted). You can transfer the encrypted coins from Alice to your just generated account by <code>debug</code> command.</p>
-<pre><code>zface debug send -t &lt;YOUR ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface debug send -t &lt;YOUR ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <p>For example, the following command can transfer 100 coins to <code>5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i</code> address. The address is depending on your account. Please copy and pasted printed-out address.</p>
-<pre><code>zface debug send -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i -a 100
+<pre><code>./target/release/zface debug send -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i -a 100
 </code></pre>
 <h5><a class="header" href="#4-2-check-your-balanace" id="4-2-check-your-balanace">4-2. Check your balanace</a></h5>
 <p>If the transferring coins was done successfully, your account should have 100 coins. You can check the balance by</p>
-<pre><code>zface wallet balance
+<pre><code>./target/release/zface wallet balance
 </code></pre>
 <p>You will then be prompted to enter your passoword.</p>
 <h5><a class="header" href="#4-3-confidential-payment-between-your-accounts" id="4-3-confidential-payment-between-your-accounts">4-3. Confidential payment between your accounts</a></h5>
@@ -187,22 +187,22 @@
 <ul>
 <li>Create other your account</li>
 </ul>
-<pre><code>zface wallet add-account
+<pre><code>./target/release/zface wallet add-account
 </code></pre>
 <ul>
 <li>Check your accounts list</li>
 </ul>
-<pre><code>zface wallet list
+<pre><code>./target/release/zface wallet list
 </code></pre>
 <ul>
 <li>Change default account to your first account who has 100 coins</li>
 </ul>
-<pre><code>zface wallet change-account -n &lt;ACCOUNT_NAME&gt;
+<pre><code>./target/release/zface wallet change-account -n &lt;ACCOUNT_NAME&gt;
 </code></pre>
 <ul>
 <li>Transfer encrypted coins to your new account</li>
 </ul>
-<pre><code>zface tx send -t &lt;ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface tx send -t &lt;ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <p>It's Done!</p>
 

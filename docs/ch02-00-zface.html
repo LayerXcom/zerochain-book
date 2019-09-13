@@ -158,7 +158,7 @@
 <h3><a class="header" href="#creating-a-new-wallet" id="creating-a-new-wallet">Creating a new wallet</a></h3>
 <p>For security reasons, the cryptographic materials are stored encryped by providing a password.</p>
 <p>To do this, run:</p>
-<pre><code>zface wallet init
+<pre><code>./target/release/zface wallet init
 </code></pre>
 <p>You will then be prompted to enter a password. This password will be used to encrypt your mnemonics of your wallet. Wallet files are stored in zface directory located in the following path.</p>
 <p>|Platform | Value | Example |
@@ -168,96 +168,96 @@
 | Windows | {FOLDERID_LocalAppData}\zface | C:\Users\Alice\AppData\Local\zface |</p>
 <h3><a class="header" href="#add-a-account" id="add-a-account">Add a account</a></h3>
 <p>You can add a new account into your wallet.</p>
-<pre><code>zface wallet add-account
+<pre><code>./target/release/zface wallet add-account
 </code></pre>
 <h3><a class="header" href="#show-accounts-list" id="show-accounts-list">Show accounts list</a></h3>
 <p>It will show your accounts in your wallet.</p>
-<pre><code>zface wallet list
+<pre><code>./target/release/zface wallet list
 </code></pre>
 <h3><a class="header" href="#change-default-account" id="change-default-account">Change default account</a></h3>
-<pre><code>zface wallet change-account -n &lt;ACCOUNT_NAME&gt;
+<pre><code>./target/release/zface wallet change-account -n &lt;ACCOUNT_NAME&gt;
 </code></pre>
 <h3><a class="header" href="#recover-a-wallet-from-mnemonic" id="recover-a-wallet-from-mnemonic">Recover a wallet from mnemonic</a></h3>
 <p>(TODO)</p>
-<pre><code>zface wallet recover
+<pre><code>./target/release/zface wallet recover
 </code></pre>
 <p>You will then be prompted to enter a mnemonic to recover your wallet.</p>
 <h3><a class="header" href="#get-balances" id="get-balances">Get balances</a></h3>
 <ul>
 <li>Getting your current balance from <code>encrypted-balances</code> module</li>
 </ul>
-<pre><code>zface wallet balance
+<pre><code>./target/release/zface wallet balance
 </code></pre>
 <ul>
 <li>Getting your curernt balance from <code>encrypted-balances</code> module</li>
 </ul>
-<pre><code>zface wallet asset-balance -i &lt;ASSET_ID&gt;
+<pre><code>./target/release/zface wallet asset-balance -i &lt;ASSET_ID&gt;
 </code></pre>
 <ul>
 <li>Getting your curernt balance from <code>anonymous-balances</code> module</li>
 </ul>
-<pre><code>zface wallet anonymous-balance
+<pre><code>./target/release/zface wallet anonymous-balance
 </code></pre>
 <h3><a class="header" href="#setup-for-zk-proving" id="setup-for-zk-proving">Setup for zk-proving</a></h3>
 <p>Generating a proving key and verifying key of zk-SNARKs.</p>
-<pre><code>zface snark setup
+<pre><code>./target/release/zface snark setup
 </code></pre>
 <h3><a class="header" href="#send" id="send">send</a></h3>
 <ul>
 <li>Submit a transaction to call <code>confidential_transfer</code> function in <code>encrypted-balances</code> module.</li>
 </ul>
-<pre><code>zface tx send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface tx send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <ul>
 <li>Submit a transaction to call <code>issue</code> function in <code>encrypted-assets</code> module.</li>
 </ul>
-<pre><code>zface tx asset-issue -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface tx asset-issue -a &lt;AMOUNT&gt;
 </code></pre>
 <ul>
 <li>Submit a transaction to call <code>asset_transfer</code> function in <code>encrypted-assets</code> module.</li>
 </ul>
-<pre><code>zface tx asset-send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt; -i &lt;ASSET_ID&gt;
+<pre><code>./target/release/zface tx asset-send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt; -i &lt;ASSET_ID&gt;
 </code></pre>
 <ul>
 <li>Submit a transaction to call <code>burn</code> function in <code>encrypted-assets</code> module.</li>
 </ul>
-<pre><code>zface tx asset-burn -i &lt;ASSET_ID&gt;
+<pre><code>./target/release/zface tx asset-burn -i &lt;ASSET_ID&gt;
 </code></pre>
 <ul>
 <li>Submit a transaction to call <code>issue</code> function in <code>anonymous-balances</code> module.</li>
 </ul>
-<pre><code>zface tx anonymous-issue -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface tx anonymous-issue -a &lt;AMOUNT&gt;
 </code></pre>
 <ul>
 <li>Submit a transaction to call <code>anonymous_transfer</code> function in <code>anonymous-balances</code> module.</li>
 </ul>
-<pre><code>zface tx anonymous-send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface tx anonymous-send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <h3><a class="header" href="#manage-encrypted-assets" id="manage-encrypted-assets">Manage encrypted assets</a></h3>
 <ul>
 <li>Issue new encrypted assets</li>
 </ul>
-<pre><code>zface tx asset-issue -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface tx asset-issue -a &lt;AMOUNT&gt;
 </code></pre>
 <ul>
 <li>Send encrypted assets</li>
 </ul>
-<pre><code>zface tx asset-transfer -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt; -i &lt;ASSET_ID&gt;
+<pre><code>./target/release/zface tx asset-transfer -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt; -i &lt;ASSET_ID&gt;
 </code></pre>
 <ul>
 <li>Burn encrypted assets</li>
 </ul>
-<pre><code>zface tx asset-burn -i &lt;ASSET_ID&gt;
+<pre><code>./target/release/zface tx asset-burn -i &lt;ASSET_ID&gt;
 </code></pre>
 <h2><a class="header" href="#test-for-debugging" id="test-for-debugging">Test for debugging</a></h2>
 <h3><a class="header" href="#print-key-components" id="print-key-components">Print key components</a></h3>
-<pre><code>zface debug key-init
+<pre><code>./target/release/zface debug key-init
 </code></pre>
 <h3><a class="header" href="#send-tx-for-debuggin" id="send-tx-for-debuggin">Send tx for debuggin</a></h3>
-<pre><code>zface debug send -s &lt;SENDER_SEED&gt; -t &lt;RECPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface debug send -s &lt;SENDER_SEED&gt; -t &lt;RECPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <h3><a class="header" href="#print-transaction-components" id="print-transaction-components">Print transaction components</a></h3>
-<pre><code>zface debug print-tx
+<pre><code>./target/release/zface debug print-tx
 </code></pre>
 
                     </main>

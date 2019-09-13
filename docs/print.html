@@ -217,12 +217,12 @@ cargo build --release
 <p>In this tutorial, we assumed you've already done the all installation explained <a href="ch01-01-installation.html">previous section</a>.</p>
 <h3><a class="header" href="#1-install-zface" id="1-install-zface">1. Install ZFace</a></h3>
 <p>First of all, you need to install <a href="ch02-00-zface.html">ZFace</a> to interact with Zerochain. ZFace is basically a low-level wallet core and cryptographic tools for Zerochain.</p>
-<pre><code>cargo install --force --path zface
+<pre><code>cargo build --release -p zface
 </code></pre>
 <p>Then, you can use CLI powerd by ZFace.</p>
 <h3><a class="header" href="#2-wallet-creation" id="2-wallet-creation">2. Wallet creation</a></h3>
 <p>Create a new zerochain wallet.</p>
-<pre><code>zface wallet init
+<pre><code>./target/release/zface wallet init
 </code></pre>
 <p>You will then be prompted to enter a wallet password and a initial account name.
 <strong>Please, note carefully the following mnemonic words. They will be needed to recover your wallet.</strong></p>
@@ -239,14 +239,14 @@ cargo build --release
 <h3><a class="header" href="#4-interacting-with-zerochain" id="4-interacting-with-zerochain">4. Interacting with Zerochain</a></h3>
 <h5><a class="header" href="#4-1-transfer-initial-minted-coins-to-your-account" id="4-1-transfer-initial-minted-coins-to-your-account">4-1. Transfer initial minted coins to your account</a></h5>
 <p>When you initialize your Zerochain, a specific Alice account has initial minted 10,000 coins (of course, it is encrypted). You can transfer the encrypted coins from Alice to your just generated account by <code>debug</code> command.</p>
-<pre><code>zface debug send -t &lt;YOUR ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface debug send -t &lt;YOUR ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <p>For example, the following command can transfer 100 coins to <code>5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i</code> address. The address is depending on your account. Please copy and pasted printed-out address.</p>
-<pre><code>zface debug send -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i -a 100
+<pre><code>./target/release/zface debug send -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i -a 100
 </code></pre>
 <h5><a class="header" href="#4-2-check-your-balanace" id="4-2-check-your-balanace">4-2. Check your balanace</a></h5>
 <p>If the transferring coins was done successfully, your account should have 100 coins. You can check the balance by</p>
-<pre><code>zface wallet balance
+<pre><code>./target/release/zface wallet balance
 </code></pre>
 <p>You will then be prompted to enter your passoword.</p>
 <h5><a class="header" href="#4-3-confidential-payment-between-your-accounts" id="4-3-confidential-payment-between-your-accounts">4-3. Confidential payment between your accounts</a></h5>
@@ -254,22 +254,22 @@ cargo build --release
 <ul>
 <li>Create other your account</li>
 </ul>
-<pre><code>zface wallet add-account
+<pre><code>./target/release/zface wallet add-account
 </code></pre>
 <ul>
 <li>Check your accounts list</li>
 </ul>
-<pre><code>zface wallet list
+<pre><code>./target/release/zface wallet list
 </code></pre>
 <ul>
 <li>Change default account to your first account who has 100 coins</li>
 </ul>
-<pre><code>zface wallet change-account -n &lt;ACCOUNT_NAME&gt;
+<pre><code>./target/release/zface wallet change-account -n &lt;ACCOUNT_NAME&gt;
 </code></pre>
 <ul>
 <li>Transfer encrypted coins to your new account</li>
 </ul>
-<pre><code>zface tx send -t &lt;ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface tx send -t &lt;ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <p>It's Done!</p>
 <h1><a class="header" href="#turotial-encrypted-fungible-assets" id="turotial-encrypted-fungible-assets">Turotial: Encrypted fungible assets</a></h1>
@@ -277,34 +277,34 @@ cargo build --release
 <p>We expect you to install ZFace, create your wallet, and run Zerochain following <a href="ch01-02-tutorial-confidential-payment.html">the section1~3 in this page</a>.</p>
 <h3><a class="header" href="#1-mint-100-encrypted-coins" id="1-mint-100-encrypted-coins">1. Mint 100 encrypted coins</a></h3>
 <p>You can mint your encrypted assets by the following commands. The amount is specified <code>100</code> and the asset-id is automatically determined as a unique number. You can fetch the asset-id by the event.</p>
-<pre><code>zface tx asset-issue -a 100
+<pre><code>./target/release/zface tx asset-issue -a 100
 </code></pre>
 <h3><a class="header" href="#2-transfer-encrypted-asset" id="2-transfer-encrypted-asset">2. Transfer encrypted asset</a></h3>
 <p>Let's transfer 20 encrypted-coins to the address <code>5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i</code>(This address is depending on your wallet account). The asset-id of initial minted assets is <code>0</code>, so you need to specify it.</p>
-<pre><code>zface tx asset-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
+<pre><code>./target/release/zface tx asset-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
 </code></pre>
 <h3><a class="header" href="#3-check-your-current-balance-of-encrypted-assets" id="3-check-your-current-balance-of-encrypted-assets">3. Check your current balance of encrypted assets</a></h3>
 <p>You just transferred 20 assets to other address and are subtracted 1 assets as fee, so you're supposed to have 79 assets.</p>
-<pre><code>zface wallet asset-balance -i 0
+<pre><code>./target/release/zface wallet asset-balance -i 0
 </code></pre>
 <h3><a class="header" href="#4-burn-encrypted-asset" id="4-burn-encrypted-asset">4. Burn encrypted asset</a></h3>
 <p>To burn your encrypted assets, just specify the asset-id and then destroy the assets.</p>
-<pre><code>zface tx asset-burn -i 0
+<pre><code>./target/release/zface tx asset-burn -i 0
 </code></pre>
 <h1><a class="header" href="#tutorial-anonymous-payments" id="tutorial-anonymous-payments">Tutorial: Anonymous payments</a></h1>
 <p>In this tutorial, we'll explain how you can send transactions in an anonymous manner. We provide a special Substrate module called <a href="https://github.com/LayerXcom/zero-chain/tree/master/modules/anonymous-balances"><code>anonymous-balances</code></a> module. User's coins managed in the <code>anonymous-balances</code> modules are encrypted in the same way as <code>encrypted-balances</code> module. To get an anonimous features, more precisely obfuscating features, some dummy addresses are added to a target address set in a transaction, so that an actual recipient address and dummy addresses cannot be distinguishable from the other people perspective.</p>
 <p>For following the tutorial, we expect you to already install ZFace, create your wallet, and run Zerochain, see <a href="ch01-02-tutorial-confidential-payment.html">the section1~3 in this page</a>.</p>
 <h3><a class="header" href="#1-mint-100-encrypted-coins-1" id="1-mint-100-encrypted-coins-1">1. Mint 100 encrypted coins</a></h3>
 <p>You can mint your encrypted coins by the following commands. This issue method isn't anonymous way but confidential way.</p>
-<pre><code>zface tx anonymous-issue -a 100
+<pre><code>./target/release/zface tx anonymous-issue -a 100
 </code></pre>
 <h3><a class="header" href="#2-send-an-anonymous-transaction" id="2-send-an-anonymous-transaction">2. Send an anonymous transaction</a></h3>
 <p>Let's transfer 20 encrypted-coins to the address <code>5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i</code>(This address is depending on your wallet account). Some dummy addresses are automatically added to the transaction so that other people cannot see where it came from and went to.</p>
-<pre><code>zface tx anonymous-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
+<pre><code>./target/release/zface tx anonymous-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
 </code></pre>
 <h3><a class="header" href="#3-check-your-current-balance" id="3-check-your-current-balance">3. Check your current balance</a></h3>
 <p>You just transferred 20 assets to other address, so you're supposed to have 80 assets.</p>
-<pre><code>zface wallet anonymous-balance
+<pre><code>./target/release/zface wallet anonymous-balance
 </code></pre>
 <h1><a class="header" href="#zface-an-interface-for-interacting-with-zerochain" id="zface-an-interface-for-interacting-with-zerochain">ZFace: An interface for interacting with Zerochain</a></h1>
 <p>(WIP)</p>
@@ -319,7 +319,7 @@ cargo build --release
 <h3><a class="header" href="#creating-a-new-wallet" id="creating-a-new-wallet">Creating a new wallet</a></h3>
 <p>For security reasons, the cryptographic materials are stored encryped by providing a password.</p>
 <p>To do this, run:</p>
-<pre><code>zface wallet init
+<pre><code>./target/release/zface wallet init
 </code></pre>
 <p>You will then be prompted to enter a password. This password will be used to encrypt your mnemonics of your wallet. Wallet files are stored in zface directory located in the following path.</p>
 <p>|Platform | Value | Example |
@@ -329,96 +329,96 @@ cargo build --release
 | Windows | {FOLDERID_LocalAppData}\zface | C:\Users\Alice\AppData\Local\zface |</p>
 <h3><a class="header" href="#add-a-account" id="add-a-account">Add a account</a></h3>
 <p>You can add a new account into your wallet.</p>
-<pre><code>zface wallet add-account
+<pre><code>./target/release/zface wallet add-account
 </code></pre>
 <h3><a class="header" href="#show-accounts-list" id="show-accounts-list">Show accounts list</a></h3>
 <p>It will show your accounts in your wallet.</p>
-<pre><code>zface wallet list
+<pre><code>./target/release/zface wallet list
 </code></pre>
 <h3><a class="header" href="#change-default-account" id="change-default-account">Change default account</a></h3>
-<pre><code>zface wallet change-account -n &lt;ACCOUNT_NAME&gt;
+<pre><code>./target/release/zface wallet change-account -n &lt;ACCOUNT_NAME&gt;
 </code></pre>
 <h3><a class="header" href="#recover-a-wallet-from-mnemonic" id="recover-a-wallet-from-mnemonic">Recover a wallet from mnemonic</a></h3>
 <p>(TODO)</p>
-<pre><code>zface wallet recover
+<pre><code>./target/release/zface wallet recover
 </code></pre>
 <p>You will then be prompted to enter a mnemonic to recover your wallet.</p>
 <h3><a class="header" href="#get-balances" id="get-balances">Get balances</a></h3>
 <ul>
 <li>Getting your current balance from <code>encrypted-balances</code> module</li>
 </ul>
-<pre><code>zface wallet balance
+<pre><code>./target/release/zface wallet balance
 </code></pre>
 <ul>
 <li>Getting your curernt balance from <code>encrypted-balances</code> module</li>
 </ul>
-<pre><code>zface wallet asset-balance -i &lt;ASSET_ID&gt;
+<pre><code>./target/release/zface wallet asset-balance -i &lt;ASSET_ID&gt;
 </code></pre>
 <ul>
 <li>Getting your curernt balance from <code>anonymous-balances</code> module</li>
 </ul>
-<pre><code>zface wallet anonymous-balance
+<pre><code>./target/release/zface wallet anonymous-balance
 </code></pre>
 <h3><a class="header" href="#setup-for-zk-proving" id="setup-for-zk-proving">Setup for zk-proving</a></h3>
 <p>Generating a proving key and verifying key of zk-SNARKs.</p>
-<pre><code>zface snark setup
+<pre><code>./target/release/zface snark setup
 </code></pre>
 <h3><a class="header" href="#send" id="send">send</a></h3>
 <ul>
 <li>Submit a transaction to call <code>confidential_transfer</code> function in <code>encrypted-balances</code> module.</li>
 </ul>
-<pre><code>zface tx send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface tx send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <ul>
 <li>Submit a transaction to call <code>issue</code> function in <code>encrypted-assets</code> module.</li>
 </ul>
-<pre><code>zface tx asset-issue -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface tx asset-issue -a &lt;AMOUNT&gt;
 </code></pre>
 <ul>
 <li>Submit a transaction to call <code>asset_transfer</code> function in <code>encrypted-assets</code> module.</li>
 </ul>
-<pre><code>zface tx asset-send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt; -i &lt;ASSET_ID&gt;
+<pre><code>./target/release/zface tx asset-send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt; -i &lt;ASSET_ID&gt;
 </code></pre>
 <ul>
 <li>Submit a transaction to call <code>burn</code> function in <code>encrypted-assets</code> module.</li>
 </ul>
-<pre><code>zface tx asset-burn -i &lt;ASSET_ID&gt;
+<pre><code>./target/release/zface tx asset-burn -i &lt;ASSET_ID&gt;
 </code></pre>
 <ul>
 <li>Submit a transaction to call <code>issue</code> function in <code>anonymous-balances</code> module.</li>
 </ul>
-<pre><code>zface tx anonymous-issue -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface tx anonymous-issue -a &lt;AMOUNT&gt;
 </code></pre>
 <ul>
 <li>Submit a transaction to call <code>anonymous_transfer</code> function in <code>anonymous-balances</code> module.</li>
 </ul>
-<pre><code>zface tx anonymous-send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface tx anonymous-send -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <h3><a class="header" href="#manage-encrypted-assets" id="manage-encrypted-assets">Manage encrypted assets</a></h3>
 <ul>
 <li>Issue new encrypted assets</li>
 </ul>
-<pre><code>zface tx asset-issue -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface tx asset-issue -a &lt;AMOUNT&gt;
 </code></pre>
 <ul>
 <li>Send encrypted assets</li>
 </ul>
-<pre><code>zface tx asset-transfer -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt; -i &lt;ASSET_ID&gt;
+<pre><code>./target/release/zface tx asset-transfer -t &lt;RECIPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt; -i &lt;ASSET_ID&gt;
 </code></pre>
 <ul>
 <li>Burn encrypted assets</li>
 </ul>
-<pre><code>zface tx asset-burn -i &lt;ASSET_ID&gt;
+<pre><code>./target/release/zface tx asset-burn -i &lt;ASSET_ID&gt;
 </code></pre>
 <h2><a class="header" href="#test-for-debugging" id="test-for-debugging">Test for debugging</a></h2>
 <h3><a class="header" href="#print-key-components" id="print-key-components">Print key components</a></h3>
-<pre><code>zface debug key-init
+<pre><code>./target/release/zface debug key-init
 </code></pre>
 <h3><a class="header" href="#send-tx-for-debuggin" id="send-tx-for-debuggin">Send tx for debuggin</a></h3>
-<pre><code>zface debug send -s &lt;SENDER_SEED&gt; -t &lt;RECPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
+<pre><code>./target/release/zface debug send -s &lt;SENDER_SEED&gt; -t &lt;RECPIENT_ADDRESS&gt; -a &lt;AMOUNT&gt;
 </code></pre>
 <h3><a class="header" href="#print-transaction-components" id="print-transaction-components">Print transaction components</a></h3>
-<pre><code>zface debug print-tx
+<pre><code>./target/release/zface debug print-tx
 </code></pre>
 <h1><a class="header" href="#confidential-payment" id="confidential-payment">Confidential Payment</a></h1>
 <p>The <a href="https://github.com/LayerXcom/zero-chain/tree/master/modules/encrypted-balances">encrypted-balances module</a> provides a confidential payment module.</p>
