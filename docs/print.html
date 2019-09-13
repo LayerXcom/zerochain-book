@@ -322,11 +322,11 @@ cargo build --release
 <pre><code>./target/release/zface wallet init
 </code></pre>
 <p>You will then be prompted to enter a password. This password will be used to encrypt your mnemonics of your wallet. Wallet files are stored in zface directory located in the following path.</p>
-<p>|Platform | Value | Example |
-----|----
-| Linux | $XDG_DATA_HOME or $HOME/.local/share/zface | /home/alice/.local/share/zface |
-| macOS | $HOME/Library/Application Support/zface | /Users/Alice/Library/Application Support/zface |
-| Windows | {FOLDERID_LocalAppData}\zface | C:\Users\Alice\AppData\Local\zface |</p>
+<table><thead><tr><th>Platform</th><th>Value</th><th>Example</th></tr></thead><tbody>
+<tr><td>Linux</td><td>$XDG_DATA_HOME or $HOME/.local/share/zface</td><td>/home/alice/.local/share/zface</td></tr>
+<tr><td>macOS</td><td>$HOME/Library/Application Support/zface</td><td>/Users/Alice/Library/Application Support/zface</td></tr>
+<tr><td>Windows</td><td>{FOLDERID_LocalAppData}\zface</td><td>C:\Users\Alice\AppData\Local\zface</td></tr>
+</tbody></table>
 <h3><a class="header" href="#add-a-account" id="add-a-account">Add a account</a></h3>
 <p>You can add a new account into your wallet.</p>
 <pre><code>./target/release/zface wallet add-account

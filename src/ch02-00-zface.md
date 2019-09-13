@@ -21,7 +21,7 @@ To do this, run:
 You will then be prompted to enter a password. This password will be used to encrypt your mnemonics of your wallet. Wallet files are stored in zface directory located in the following path.
 
 |Platform | Value | Example |
-----|----
+|---|---|---|
 | Linux | $XDG_DATA_HOME or $HOME/.local/share/zface | /home/alice/.local/share/zface |
 | macOS | $HOME/Library/Application Support/zface | /Users/Alice/Library/Application Support/zface |
 | Windows | {FOLDERID_LocalAppData}\zface | C:\Users\Alice\AppData\Local\zface |
