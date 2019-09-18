@@ -15,7 +15,7 @@ You can mint your encrypted coins by the following commands. This issue method i
 Let's transfer 20 encrypted-coins to the address `5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i`(This address is depending on your wallet account). Some dummy addresses are automatically added to the transaction so that other people cannot see where it came from and went to.
 
 ```
-./target/release/zface tx anonymous-send -a 20 -i 0 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
+./target/release/zface tx anonymous-send -a 20 -t 5DC4kJ84b4KfVyddcFMYfy5skTJWVtxtWRETZo2i4nh8Ao1i
 ```
 
 ### 3. Check your current balance
