@@ -26,7 +26,7 @@ sudo apt install cmake pkg-config libssl-dev git clang libclang-dev
 Zerochan, then, can be building.
 
 ```
-git clone git@github.com:LayerXcom/zero-chain.git
+git clone https://github.com/LayerXcom/zero-chain.git
 cd zero-chain
 ./build.sh
 cargo build --release
