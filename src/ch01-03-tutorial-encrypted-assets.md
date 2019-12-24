@@ -1,4 +1,4 @@
-# Turotial: Encrypted fungible assets
+# Tutorial: Encrypted fungible assets
 
 In this tutorial, we'll exlapin how you can manage your encrypted fungible assets in Zerochan. We provide a special substrate module called [`encrypted-assets`](https://github.com/LayerXcom/zero-chain/tree/master/modules/encrypted-assets) module in order to mint, burn, and transfer encrypted assets. These assets are encrypted on-chain, so no-one can see the actual amounts without its decryption key. Each assets has an unique `asset-id` to be managed as separated assets.
 

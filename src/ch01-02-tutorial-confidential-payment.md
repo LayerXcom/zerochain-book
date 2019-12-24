@@ -1,4 +1,4 @@
-# Turotial: Confidential payment
+# Tutorial: Confidential payment
 
 This tutorial will explain the basic confidential transfer on Zerochain. Alice has the **encrypted** balance of 10,000 coins and sends **encrypted** 100 coins to you. The encrypted fee will be subtracted from her balance. (By default, a base fee parameter is set to 1.) So, Alice's balance will be 9,899 coins and you will get the 100 coins. All operations are done encrypted by ElGamal encryption and zk-SNARKs.
 
